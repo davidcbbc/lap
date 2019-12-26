@@ -11,28 +11,12 @@
 
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li class="active">
-                <a href="index.html">Home</a>
+                <a href="/">Início</a>
               </li>
-              <li><a href="dj.html">DJs</a></li>
-              <li class="has-children">
-                <a href="shows.html">Shows</a>
-                <ul class="dropdown arrow-top">
-                  <li><a href="#">Top 20 of The Week</a></li>
-                  <li><a href="#">Featured Artist</a></li>
-                  <li><a href="#">Interviews</a></li>
-                  <li class="has-children">
-                    <a href="#">Sub Menu</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Menu One</a></li>
-                      <li><a href="#">Menu Two</a></li>
-                      <li><a href="#">Menu Three</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="events.html">Events</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
+
+              <li class="active">
+                  <a href="/login">Login</a>
+                </li>
             </ul>
           </nav>
         </div>
