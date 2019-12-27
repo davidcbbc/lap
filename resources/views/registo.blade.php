@@ -25,8 +25,8 @@
     <div class="container">
       <div class="row align-items-center justify-content-center">
         <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">
-          <h1 class="text-white">Entrar</h1>
-          <p>ou registar.</p>
+          <h1 class="text-white">Registar</h1>
+          <p>na arena.</p>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
 
 
 
-          <form action="/login" class="contact-form" method="POST">
+          <form action="/registo" class="contact-form" method="POST">
             {{ csrf_field() }}
             <div class="row form-group">
               <div class="col-md-12 mb-3 mb-md-0">
@@ -48,6 +48,27 @@
                 <input type="text" name="user" id="user" class="form-control" placeholder="Utilizador">
               </div>
             </div>
+
+            <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" for="fullname">Email</label>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                </div>
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold" for="fullname">Faculdade</label>
+                <select class="form-control" name="faculdade">
+                    <option value="ufp">UFP</option>
+                    <option value="feup">FEUP</option>
+                    <option value="isep">ISEP</option>
+                    <option value="outro">Outra</option>
+                  </select>
+                </div>
+            </div>
+
 
 
 
@@ -59,16 +80,18 @@
             </div>
 
             <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="font-weight-bold" for="message">Repete password</label>
+                  <input type="password" name="password2" id="password2" class="form-control" placeholder="Password">
+                </div>
+              </div>
+
+            <div class="row form-group">
               <div class="col-md-12">
-                <input type="submit" value="Entrar" class="btn btn-primary py-3 px-4">
+                <input type="submit" value="Registar" class="btn btn-primary py-3 px-4">
               </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <a href="/registo">Registar</a>
-                </div>
-            </div>
 
 
           </form>
