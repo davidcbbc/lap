@@ -45,14 +45,14 @@
             <div class="row form-group">
               <div class="col-md-12 mb-3 mb-md-0">
                 <label class="font-weight-bold" for="fullname">Utilizador</label>
-                <input type="text" name="user" id="user" class="form-control" placeholder="Utilizador">
+                <input type="text" name="name" id="user" class="form-control" placeholder="Utilizador" value="{{old('name')}}">
               </div>
             </div>
 
             <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Email</label>
-                  <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{old('email')}}">
                 </div>
             </div>
 
@@ -82,7 +82,7 @@
             <div class="row form-group">
                 <div class="col-md-12">
                   <label class="font-weight-bold" for="message">Repete password</label>
-                  <input type="password" name="password2" id="password2" class="form-control" placeholder="Password">
+                  <input type="password" name="password_confirmation" id="password2" class="form-control" placeholder="Password">
                 </div>
               </div>
 
@@ -95,6 +95,16 @@
 
 
           </form>
+
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
 
 

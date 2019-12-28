@@ -2,29 +2,18 @@
 
 
 
-Route::get('/registo', function() {
-    return view('registo');
-});
+Route::get('/registo', 'UserController@registo');
 
+Route::post('/registo', 'UserController@create');
 
-Route::get('/', function () {
-    return view('one');
- });
+Route::get('/', 'UserController@index');
 
- Route::get('/login', function () {
-    return view("login");
- });
+Route::get('/login', 'UserController@loginPage');
 
-
-Route::post('/login', function () {
-    return request()->all();
-});
+Route::post('/login', 'UserController@login');
 
 
 
-Route::post('/registo', function () {
-    return request()->all();
-});
 
 
 Route::get('/teste', "TestController@index");
