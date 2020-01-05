@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','faculdade'
+        'name', 'email', 'password','faculdade','nick'
     ];
 
     /**
@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function equipa() {
+        return $this->belongsTo(\App\Equipa::class);
+    }
+
 }

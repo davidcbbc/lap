@@ -6,6 +6,9 @@
 @section('inicio')
 <li>
 @endsection
+@section('equipas')
+    <li>
+        @endsection
 
 @section('content')
 
@@ -38,16 +41,32 @@
 
         <div class="col-md-12 col-lg-7 mb-5">
 
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
 
           <form action="/registo" class="contact-form" method="POST">
             {{ csrf_field() }}
             <div class="row form-group">
               <div class="col-md-12 mb-3 mb-md-0">
-                <label class="font-weight-bold" for="fullname">Utilizador</label>
-                <input type="text" name="name" id="user" class="form-control" placeholder="Utilizador" value="{{old('name')}}">
+                <label class="font-weight-bold" for="fullname">Primeiro e último nome</label>
+                <input type="text" name="name" id="user" class="form-control" placeholder="Primeiro e último nome" value="{{old('name')}}">
               </div>
             </div>
+
+              <div class="row form-group">
+                  <div class="col-md-12 mb-3 mb-md-0">
+                      <label class="font-weight-bold" for="fullname">Nickname</label>
+                      <input type="text" name="nick" id="nick" class="form-control" placeholder="Nickname" value="{{old('nick')}}">
+                  </div>
+              </div>
 
             <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
@@ -96,15 +115,6 @@
 
           </form>
 
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
         </div>
 
 

@@ -6,6 +6,9 @@
 @section('inicio')
 <li class="active">
 @endsection
+@section('equipas')
+    <li>
+        @endsection
 
 
 @section('content')

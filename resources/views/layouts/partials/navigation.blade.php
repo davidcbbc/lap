@@ -14,8 +14,14 @@
                 <a href="/">Início</a>
               </li>
 
+
+
+                @yield('equipas')
+                <a href="/equipas">Equipas</a>
+                </li>
+
                 @yield('login')
-                  <a href="/login">Entrar</a>
+                <a href="/login">Entrar</a>
                 </li>
             </ul>
           </nav>

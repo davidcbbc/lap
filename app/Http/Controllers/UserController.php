@@ -7,8 +7,18 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
     public function index() {
         return view('one');
+    }
+
+    public function show($id){
+        $user = \App\User::findOrFail($id);
+        //dd($user);
+        $equipa = $user->equipa;
+        $info = array('user' => $user, 'equipa' => $equipa);
+        return view('user',compact('info'));
+
     }
 
     public function registo() {
@@ -26,9 +36,10 @@ class UserController extends Controller
     public function create(User $user) {
 
         $rules = [
-            'name' => 'required|min:4|unique:users',
+            'name' => 'required|min:4',
             'email' => 'required|unique:users|email:rfc,dns',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
+            'nick' => 'required|min:3|unique:users'
         ];
 
         $customMessages = [
@@ -37,24 +48,20 @@ class UserController extends Controller
             'password.required' => 'Escreva uma password.',
             'name.min' => 'Utilizador tem que ter no mínimo 4 caracteres.',
             'confirmed' => 'Passwords não coicidem.',
-            'name.unique' => 'Utilizador já existe.',
+            'nick.unique' => 'Nick já existe.',
+            'nick.required' => 'Escreva um nick.',
             'email.unique' => 'Email já existe.',
-            'email' => 'Email inválido.'
+            'email' => 'Email inválido.',
+            'nick.min' => 'Nick tem que ter no mínimo 3 caracteres.'
         ];
 
         $this->validate(request(), $rules, $customMessages);
 
-
-
-
-        //$user = new User;
-        //$user->name = request()->name;
-        //$user->faculdade = request()->faculdade;
-        //$user->email = request()->email;
-        //$user->password = request()->password;
-        //$user->save();
-        $user = User::create(request(['name', 'email', 'password','faculdade']));
+        $user = User::create(request(['name', 'email', 'password','faculdade','nick']));
         return $user;
     }
+
+
+
 
 }
