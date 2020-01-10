@@ -7,7 +7,7 @@
     <li>
 @endsection
 @section('equipas')
-    <li class="active">
+    <li>
         @endsection
 
         @section('content')
@@ -23,11 +23,11 @@
                 <div class="site-mobile-menu-body"></div>
             </div> <!-- .site-mobile-menu -->
 
-            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{url('images/avatar.jpg')}});"
+            <div class="site-blocks-cover"
                  data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
-                        <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="col-md-5 text-center" data-aos="fade-up" data-aos-delay="400">
                             <h1 class="text-white">{{$info['user']->nick}}</h1>
                             <p>{{$info['user']->name}}</p>
                         </div>
@@ -51,7 +51,7 @@
                             </div>
 
 
-
+                        @if($info['user']->equipa != null)
                         <div class="row">
                             <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
                                 <h2 class="mb-5">equipa</h2><br>
@@ -61,6 +61,8 @@
                         <div class ="row">
                             <h2 class="text-center mb-5">{{$info['user']->equipa->nome}}</h2>
                         </div>
+
+                        @endif
 
                         <div class="row">
                             <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">

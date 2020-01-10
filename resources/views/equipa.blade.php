@@ -34,15 +34,23 @@
                 </div>
             </div>
 
+
+
             <div class="site-section">
                 <div class="container">
                     <div class="site-section">
                         <div class="container" data-aos="fade-up">
                             <div class="row">
+                                <div class="site-section-heading text-center mb-5 w-border col-md-5 mx-auto">
+                                    <img style="border: transparent;background-color: transparent;" src="{{asset('storage/'.$info['equipa']->imagem_path)}}" class="img-thumbnail" alt="Imagem">
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
                                     <h2 class="mb-5">membros</h2>
                                 </div>
                             </div>
+
                             <div class="row">
 
                                 @foreach($info['users'] as $user)
@@ -59,41 +67,40 @@
                                                 </p>
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
+                                        @endforeach
+                                    </div>
                             </div>
-
+                            <br>
                             <div class="row">
                                 <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-5">fundado em</h2><br>
+                                    <h2 class="mb-1">fundado em</h2><br>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <h2 class="text-center mx-auto mb-5">{{$info['equipa']->created}}</h2>
+                            </div>
+
+                            <br>
+                            <div class="row">
+                                <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
+                                    <h2 class="mb-1">partidas vencidas</h2><br>
                                 </div>
 
                             </div>
                             <div class ="row">
-                                <h2 class="text-center mb-5">{{$info['equipa']->created}}</h2>
+                                <h2 class="text-center mx-auto mb-5">{{$info['equipa']->num_vitorias}}</h2>
                             </div>
-
-
+                            <br>
                             <div class="row">
                                 <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-5">partidas vencidas</h2><br>
+                                    <h2 class="mb-1">torneios vencidos</h2><br>
                                 </div>
 
                             </div>
                             <div class ="row">
-                                <h2 class="text-center mb-5">{{$info['equipa']->num_vitorias}}</h2>
+                                <h2 class="text-center mx-auto mb-5">{{$info['equipa']->torneios_vencidos}}</h2>
                             </div>
-
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-5">torneios vencidos</h2><br>
-                                </div>
-
-                            </div>
-                            <div class ="row">
-                                <h2 class="text-center mb-5">{{$info['equipa']->torneios_vencidos}}</h2>
-                            </div>
-
+                            <br>
                         </div>
                     </div>
 

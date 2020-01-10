@@ -48,12 +48,33 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        $customMessages = [
+            'name.required' => 'Escreva um nome de utilizador.',
+            'name.max'=> 'Nome não pode ter mais que 30 caracteres',
+            'email.required' => 'Escreva um email.',
+            'password.required' => 'Escreva uma password.',
+            'name.min' => 'Utilizador tem que ter no mínimo 4 caracteres.',
+            'confirmed' => 'Passwords não coicidem.',
+            'nick.unique' => 'Nick já existe.',
+            'nick.required' => 'Escreva um nick.',
+            'nick.max' => 'Nick não pode ter mais que 10 caracteres',
+            'email.unique' => 'Email já existe.',
+            'password.min' => 'Passoword tem que ter no mínimo 8 caracteres',
+            'email' => 'Email inválido.',
+            'nick.min' => 'Nick tem que ter no mínimo 3 caracteres.'
+        ];
+
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'name' => 'required|min:4|max:30',
+            'email' => 'required|unique:users|email:rfc,dns',
+            'password' => 'required|confirmed|min:8',
+            'nick' => 'required|min:3|unique:users|max:10'
+        ],$customMessages);
     }
+
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -67,6 +88,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'nick' => $data['nick'],
+            'faculdade' => $data['faculdade']
         ]);
     }
 }

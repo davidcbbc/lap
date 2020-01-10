@@ -2,15 +2,8 @@
 
 
 
-Route::get('/registo', 'UserController@registo');
 
-Route::post('/registo', 'UserController@create');
-
-Route::get('/', 'UserController@index');
-
-Route::get('/login', 'UserController@loginPage');
-
-Route::post('/login', 'UserController@login');
+Route::get('/', 'GuestController@index');
 
 Route::get('/equipas/','EquipasController@index');
 
@@ -18,7 +11,12 @@ Route::get('/equipas/{id}','EquipasController@show');
 
 Route::get('/users/{id}','UserController@show');
 
-Route::get('/teste', "TestController@index");
+Auth::routes(['verify' => true]);
 
+Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/equipa/create','EquipasController@create')->middleware('auth','noEquipa','verified');
 
+Route::post('/equipa/create','EquipasController@add')->middleware('auth','noEquipa','verified');
+
+Route::get('/notificacoes','ConviteController@show')->middleware('verified');
