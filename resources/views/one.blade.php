@@ -22,7 +22,7 @@
     <div class="site-mobile-menu-body"></div>
   </div> <!-- .site-mobile-menu -->
 
-  <div class="site-blocks-cover overlay" style="background-image: url('images/wall.jpg');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
+  <div class="site-blocks-cover overlay" style="background-image: url('images/homem.gif');" data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
     <div class="container">
       <div class="row align-items-center justify-content-center">
         <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">

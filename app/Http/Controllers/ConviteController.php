@@ -15,7 +15,9 @@ class ConviteController extends Controller
 
 
     public function show(){
-        return Auth::id();
+        $user = Auth::user();
+        $notifications = $user->notifications;
+        return view('notifications',compact('notifications'));
     }
 
 }

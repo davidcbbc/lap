@@ -12,6 +12,10 @@ class Equipa extends Model
         return $this->hasMany(\App\User::class);
     }
 
+    public function getCapitao(){
+        return \App\User::find($this->user_id);
+    }
+
 
 
 }

@@ -51,6 +51,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'capitao' => \App\Http\Middleware\CheckCapitao::class,
         'noEquipa' => \App\Http\Middleware\CheckIfEquipa::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

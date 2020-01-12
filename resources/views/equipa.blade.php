@@ -67,8 +67,28 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        @endforeach
                                     </div>
+                                @endforeach
+                                @guest
+                                    @else
+                                @if(Auth::user()->id == $info['equipa']->user_id)
+                                        <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+                                            <div class="team-member">
+
+                                                <img src="{{asset('images/add.png')}}" alt="Image" class="img-fluid">
+
+                                                <div class="text">
+
+                                                    <h2 class="mb-2 font-weight-light h4">{{'Novo membro'}}</h2>
+                                                    <p>
+                                                        <a href="/convidar" class="text-white p-2">Convidar</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                @endif
+                                @endguest
+
                             </div>
                             <br>
                             <div class="row">
@@ -77,7 +97,7 @@
                                 </div>
                             </div>
                             <div class ="row">
-                                <h2 class="text-center mx-auto mb-5">{{$info['equipa']->created}}</h2>
+                                <h2 class="text-center mx-auto mb-5">{{$info['equipa']->created_at}}</h2>
                             </div>
 
                             <br>
