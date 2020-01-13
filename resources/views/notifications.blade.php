@@ -41,31 +41,39 @@
                     <div class="row">
 
                         <table class ="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">Notificação</th>
-                                <th scope="col">Equipa</th>
-                                <th scope="col">Ação</th>
-                                <th scope="col">Marcar como lida</th>
 
-
-                            </tr>
-                            </thead>
                             <tbody>
 
+
+                            @if(session()->has('erro'))
+                                <div class="alert alert-danger">
+                                    {{ session()->get('erro') }}
+                                </div>
+                            @endif
+
+                            @if(session()->has('sucesso'))
+                                <div class="alert alert-success">
+                                    {{ session()->get('sucesso') }}
+                                </div>
+                            @endif
                             <tr>
+                                @if(!count($notifications))
+                                    <p1>Não há nenhuma notificação para mostrar.</p1>
+                                    @endif
                                 @foreach($notifications as $notification)
 
                                     <th>{{\App\Equipa::find($notification->data['equipa_id'])->getCapitao()->nick . ' pediu para te juntares à sua equipa'}}</th>
                                     <td>{{\App\Equipa::find($notification->data['equipa_id'])->nome}}</td>
                                     <td><div class="ui-group-buttons">
-                                            <a href="" class="btn btn-success" role="button"><span class="glyphicon glyphicon-floppy-disk"></span></a>
-                                            <div class="or"></div>
-                                            <a href="" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                                            <form action="/equipa/aceitar" method="POST">
+                                                @csrf
+                                                <button name="opcao" type="submit" class="btn btn-success" role="button" value="aceitar"><span class="glyphicon glyphicon-floppy-disk"></span>Aceitar</button>
+                                                <button name="opcao" type="submit" class="btn btn-danger" role="button" value ="recusar"><span class="glyphicon glyphicon-floppy-disk"></span>Recusar</button>
+                                            </form>
+
+
                                         </div></td>
-                                    <td><button type="button" class="">
-                                            <span class="btn-label "><i class="glyphicon glyphicon-ok"></i></span>Marcar como lida</button>
-                                    </td>
+
                                 @endforeach
                             </tr>
                             </tbody>

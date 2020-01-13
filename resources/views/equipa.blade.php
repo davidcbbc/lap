@@ -36,8 +36,6 @@
 
 
 
-            <div class="site-section">
-                <div class="container">
                     <div class="site-section">
                         <div class="container" data-aos="fade-up">
                             <div class="row">
@@ -125,8 +123,7 @@
                     </div>
 
 
-                </div>
-            </div>
+
 
             <div class="bg-primary" data-aos="fade">
                 <div class="container">

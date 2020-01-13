@@ -33,7 +33,7 @@ class CapitaoController extends Controller
         if($jogador->equipa_id != null) return redirect()->back()->with('err', 'O jogador ' .$request->nick. ' já tem equipa.' );
         $idEquipa = Auth::user()->equipa->id;
         //ver se o jogador ja foi convidado e se viu o convite
-        foreach ($jogador->notifications as $notification){
+        foreach ($jogador->unreadNotifications as $notification){
             if($notification->type == "App\Notifications\ConviteEquipa"){
                 // se for do tipo convite de equipa
                 $notif = $notification->data;

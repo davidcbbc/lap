@@ -46,21 +46,22 @@
                             @endif
 
 
-                            <form action="/registo" class="contact-form" method="POST">
-                                {{ csrf_field() }}
-                                <div class="row form-group">
-                                    <div class="col-md-12 mb-3 mb-md-0">
-                                        <label class="font-weight-bold" for="fullname">Descrição</label>
-                                        <input type="text" name="name" id="user" class="form-control"
-                                               placeholder="Descrição do Player" value="{{old('name')}}">
+
+                            @if(Auth::user()->imagem_path == null)
+                                <p1>Sem imagem de perfil</p1>
+                                @else
+                                    <div class="site-section-heading text-center mb-5 w-border col-md-5 mx-auto">
+                                        <img style="border: transparent;background-color: transparent;" src="{{asset('storage/'.Auth::user()->imagem_path)}}" class="img-thumbnail" alt="Imagem">
                                     </div>
-                                </div>
+                                @endif
+                            <form action="/definicoes" class="contact-form" method="POST" enctype="multipart/form-data">
+                                {{ csrf_field() }}
 
                                 <div class="row form-group">
                                     <div class="col-md-12 mb-3 mb-md-0">
                                         <label class="font-weight-bold" for="fullname">Editar Nickname</label>
-                                        <input type="text" name="name" id="user" class="form-control"
-                                               placeholder="Relotes" value="{{old('name')}}">
+                                        <input type="text" name="nick" id="user" class="form-control"
+                                               placeholder="Nickname" value="{{Auth::user()->nick}}">
                                     </div>
                                 </div>
 
@@ -75,7 +76,7 @@
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-folder-open"></span>
                         <span class="image-preview-input-title">Alterar imagem de perfil</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="imagem"/>
 
                     </div>
                 </span>

@@ -17,8 +17,6 @@
                     @yield('inicio')
                     <a href="/">Torneios</a>
                 @endguest
-
-
               </li>
 
                 @yield('equipas')
@@ -40,7 +38,7 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{'/users/'.Auth::user()->id}}">Perfil</a>
                             <a class="dropdown-item" href="/notificacoes">Notificações</a>
-                            <a class="dropdown-item" href="{{route('home')}}">Definições</a>
+                            <a class="dropdown-item" href="/definicoes">Definições</a>
                             <div class="dropdown-divider"></div>
                             @if(Auth::user()->equipa_id != null)
                             <a class="dropdown-item" href="{{'/equipas/'.Auth::user()->equipa->id}}">{{Auth::user()->equipa->nome}}</a>

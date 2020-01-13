@@ -61,6 +61,7 @@
                                     </div>
                                 @endif
 
+
                             <form action="/convidar" class="contact-form" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row form-group">

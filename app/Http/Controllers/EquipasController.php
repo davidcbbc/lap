@@ -25,6 +25,30 @@ class EquipasController extends Controller
         return view('addteam');
     }
 
+    //funcao para aceitar convites de equipas
+    public function aceitar(Request $request){
+        $user = Auth::user();
+        $notification = $user->unreadNotifications()->first();
+     if($request->opcao == "aceitar") {
+         $equipaId = $notification->data['equipa_id'];
+         try{
+             $equipa = \App\Equipa::findOrFail($equipaId);
+             $equipa->num_jogadores++;
+             $user->equipa_id = $equipaId;
+             $user->save();
+             $equipa->save();
+             $notification->markAsRead();
+             return redirect()->back()->with('sucesso', 'Convite para equipa aceite.' );
+         }catch (\Exception $e) {
+             // equipa eleminada
+             return redirect()->back()->with('erro', 'Convite já não é válido.' );
+         }
+     }
+        $notification->markAsRead();
+        return redirect()->back();
+    }
+
+
     //adiciona nova equipa
     public function add(Request $request){
         //validações de imagem e nome
