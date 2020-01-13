@@ -56,12 +56,12 @@
                                     {{ session()->get('sucesso') }}
                                 </div>
                             @endif
-                            <tr>
+
                                 @if(!count($notifications))
                                     <p1>Não há nenhuma notificação para mostrar.</p1>
                                     @endif
                                 @foreach($notifications as $notification)
-
+                                    <tr>
                                     <th>{{\App\Equipa::find($notification->data['equipa_id'])->getCapitao()->nick . ' pediu para te juntares à sua equipa'}}</th>
                                     <td>{{\App\Equipa::find($notification->data['equipa_id'])->nome}}</td>
                                     <td><div class="ui-group-buttons">
@@ -73,9 +73,9 @@
 
 
                                         </div></td>
-
+                                    </tr>
                                 @endforeach
-                            </tr>
+
                             </tbody>
 
                         </table>

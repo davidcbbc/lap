@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -29,13 +30,12 @@ class UserController extends Controller
 
     //edita um user
     public function editar(Request $request){
+
         $validation = $request->validate([
-            'nick' => ['unique:users,nick','max:10'],
+            'nick' => ['max:10'],
             'imagem' => 'file|image|mimes:jpeg,png|max:2048'
         ],[
 
-            'nick.unique' => 'Nick já existe',
-            'nick.required' => 'Escreva um nick',
             'nick.max' => 'Nick tem que ter no máximo 10 caracteres',
             'imagem.file' => 'Ficheiro não suportado',
             'imagem.image' => 'Imagem não suportada',
@@ -44,10 +44,20 @@ class UserController extends Controller
             'imagem.uploaded' => 'Erro de imagem : uploaded'
         ]);
         $user = Auth::user();
-        if($request->input('nick') != null)
+        // caso o nick editar seja diferente do antigo
+        // nao foi usar a validaton unique pq tambem compara com o proprio nick
+        if($request->input('nick') != $user->nick){
+            //dd("boas");
+            if(User::where('nick','=',$request->nick)->exists()){
+                //caso o nick exista
+                return redirect()->back()->with('err', 'Nick ja existe.' );
+            }
             $user->nick = $request->nick;
+        }
 
-        if($request->input('imagem_path') != null) {
+
+        if($request->imagem != null) {
+            if($user->imagem_path != null) Storage::delete($user->imagem_path);
             $file = $validation['imagem']; // get the validated file
             $extension = $file->getClientOriginalExtension();
             $jogador = str_replace(" ","_",$request->input('nick'));
@@ -55,8 +65,8 @@ class UserController extends Controller
             $path      = $file->storeAs('public/images', $filename);
             $path = substr($path,7);    //apaga o public
             $user->imagem_path = $path;
-
         }
+
 
         $user->save();
         return redirect('/definicoes');

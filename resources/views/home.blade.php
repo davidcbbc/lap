@@ -29,7 +29,7 @@
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">
                             <h1 class="mb-4">Torneios</h1>
-                            <p><a href="/login" class="btn btn-primary px-4 py-3">Ver</a></p>
+                            <p><a href="/torneios" class="btn btn-primary px-4 py-3">Ver</a></p>
                         </div>
                     </div>
                 </div>

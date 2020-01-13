@@ -44,6 +44,11 @@
                                     </ul>
                                 </div>
                             @endif
+                                @if(session()->has('err'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('err') }}
+                                    </div>
+                                @endif
 
 
 
