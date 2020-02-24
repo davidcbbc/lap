@@ -17,7 +17,7 @@
 
 
 
-            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('images/login.jpg');"
+            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{ URL::asset('images/sets.jpg') }});"
                  data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
                 <div class="container">
                     <div class="row align-items-center justify-content-center">

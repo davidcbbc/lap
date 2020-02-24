@@ -16,6 +16,10 @@ class Equipa extends Model
         return \App\User::find($this->user_id);
     }
 
+    public function torneios() {
+        return $this->belongsToMany(\App\Torneio::class,'torneios_equipas');
+    }
+
 
 
 }

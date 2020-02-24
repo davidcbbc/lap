@@ -4,10 +4,10 @@
     <li class="active">
 @endsection
 @section('inicio')
-    <li>
+    <li >
 @endsection
 @section('equipas')
-    <li>
+    <li >
         @endsection
 
 
@@ -24,7 +24,7 @@
                 <div class="site-mobile-menu-body"></div>
             </div> <!-- .site-mobile-menu -->
 
-            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('images/login.jpg');"
+            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{ URL::asset('images/awp.jpg') }});"
                  data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
                 <div class="container">
                     <div class="row align-items-center justify-content-center">

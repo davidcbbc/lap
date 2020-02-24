@@ -4,10 +4,10 @@
     <li>
 @endsection
 @section('inicio')
-    <li>
+    <li class="active">
 @endsection
 @section('equipas')
-    <li class="active">
+    <li >
         @endsection
 
         @section('content')
@@ -28,51 +28,36 @@
                 <div class="container">
                     <div class="site-section">
                         <div class="container" data-aos="fade-up">
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-5">Torneio inter turmas</h2>
+                            <div class="row row-header">
+                                <div class="col-sm">
+                                    <img src="{{asset('images/csgo.jpg')}}" class="img-thumbnail" alt="Cinque Terre" style="">
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-3 mx-auto">
-                                    <img src="https://storage-asset.msi.com/global/picture/team/e05185384654285b25d9f639db4bcee8.jpg" class="img-thumbnail" alt="Cinque Terre">
+                                <div class="col-sm">
+                                    <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
+                                        <h2 class="mb-1">{{$torneio->nome}}</h2><br>
+                                    </div>
+                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Data início </strong>{{$torneio->data_inicio}}</p>
+                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Prémio </strong>{{$torneio->premio}}</p>
+                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Máximo Equipas </strong>{{$torneio->max_equipas}}</p>
+                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Equipas Inscritas </strong>{{\Illuminate\Support\Facades\DB::table('torneios_equipas')->where('torneio_id','=',$torneio->id)->count()}}</p>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-2">Data</h2><br>
-                                </div>
-                            </div>
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-4">26-12-2020</h2>
                             </div>
                             <br>
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-1">Prémio</h2><br>
+                            <div class="col-sm">
+                                <div class="site-section-heading">
+                                    <h2 class="mb-1">Equipas</h2><br>
                                 </div>
-                            </div>
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-4">200$</h2>
+                                <div class="row">
+                                    @foreach(\Illuminate\Support\Facades\DB::table('torneios_equipas')->where('torneio_id','=',$torneio->id)->get() as $linha)
+                                        {{$equipa = \App\Equipa::find($linha[''])}}
+                                        <a href="#"><img src="{{asset('images/icon.png')}}" width="100" height="40" class="img-thumbnail" style="max-width: 100%; height: auto">
+                                        </a>
+                                    @endforeach
+                                </div>
                             </div>
 
-                            <br>
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-1">Equipas inscritas</h2><br>
-                                </div>
-
-                            </div>
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-4">19/32</h2>
-                            </div>
-                            <br>
-
-                            <br>
                         </div>
                     </div>
-
-
                 </div>
             </div>
 

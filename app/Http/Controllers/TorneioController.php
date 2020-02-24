@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use \App\Torneio;
+use File;
 
 class TorneioController extends Controller
 {
@@ -14,8 +17,11 @@ class TorneioController extends Controller
     }
 
 
-    public function show(){
-        return view('torneios');
+
+
+    public function show($id){
+        $torneio = Torneio::findOrFail($id);
+        return view('torneios', compact('torneio'));
     }
 
 

@@ -33,87 +33,10 @@
     </div>
   </div>
 
-  <div class="site-section">
-    <div class="container">
-      <div class="row">
-        <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-          <h2 class="mb-5">Próximos jogos</h2>
-        </div>
-      </div>
-      <div class="row">
-
-
-        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-          <a href="#" class="unit-9">
-            <div class="image" style="background-image: url('images/csgo.jpg');"></div>
-            <div class="unit-9-content">
-              <h2>Equipa1 x Equipa2</h2>
-              <span>13:00 &mdash; 15:30</span>
-              <span>25-11-2020</span>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-          <a href="#" class="unit-9">
-            <div class="image" style="background-image: url('images/csgo.jpg');"></div>
-            <div class="unit-9-content">
-              <h2>Equipa3 x Equipa4</h2>
-              <span>15:30 &mdash; 18:30</span>
-              <span>25-11-2020</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 
 
-  <div class="site-section bg-dark block-13">
-    <div class="container" data-aos="fade-up">
-      <div class="row">
-        <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-          <h2 class="mb-5">Top Jogadores</h2>
-          <p>Melhores jogadores da liga</p>
-        </div>
-      </div>
-      <div class="nonloop-block-13 owl-carousel">
-
-        <div class="text-center p-3 p-md-5 bg-white">
-          <div class="mb-4">
-            <img src="images/user.png" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
-          </div>
-          <div class="text-black">
-            <h3 class="font-weight-light h5">User1</h3>
-            <p class="font-italic">5 MVP 20 Headshots</p>
-          </div>
-        </div>
-
-        <div class="text-center p-3 p-md-5 bg-white">
-          <div class="mb-4">
-            <img src="images/user.png" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
-          </div>
-          <div class="text-black">
-            <h3 class="font-weight-light h5">User2</h3>
-            <p class="font-italic">3 MVP 28 Headshots</p>
-          </div>
-        </div>
-
-        <div class="text-center p-3 p-md-5 bg-white">
-          <div class="mb-4">
-            <img src="images/user.png" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
-          </div>
-          <div class="text-black">
-            <h3 class="font-weight-light h5">User3</h3>
-            <p class="font-italic">2 MVP 15 Headshots</p>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-  </div>
 
 
 

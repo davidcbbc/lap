@@ -54,8 +54,12 @@
                                 @foreach($info['users'] as $user)
                                     <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
                                         <div class="team-member">
+                                            @if($user->imagem_path != null)
+                                                <img src="{{asset('storage/'.$user->imagem_path)}}" alt="Image" class="img-fluid">
+                                            @else
+                                                <img src="{{asset('images/person_1.jpg')}}" alt="Image" class="img-fluid">
+                                            @endif
 
-                                            <img src="{{asset('images/person_1.jpg')}}" alt="Image" class="img-fluid">
 
                                             <div class="text">
 
