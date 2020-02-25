@@ -56,6 +56,7 @@
                                     {{ session()->get('sucesso') }}
                                 </div>
                             @endif
+                            <br>
 
                                 @if(!count($notifications))
                                     <p1>Não há nenhuma notificação para mostrar.</p1>

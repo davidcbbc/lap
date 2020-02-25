@@ -38,13 +38,39 @@
 
                     <div class="site-section">
                         <div class="container" data-aos="fade-up">
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-5 mx-auto">
-                                    <img style="border: transparent;background-color: transparent;" src="{{asset('storage/'.$info['equipa']->imagem_path)}}" class="img-thumbnail" alt="Imagem">
+
+
+                            <div class="row row-header">
+                                <div class="col-sm">
+                                    <img style="border: transparent;background-color: transparent;" src="{{asset('storage/'.$info['equipa']->imagem_path)}}" class="img-thumbnail" alt="Imagem" height="300" width="300">
+                                </div>
+                                <div class="col-sm">
+                                    <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
+                                        <h2 class="mb-1">Info</h2><br>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="site-section-heading">
+                                            <h2 class="">Fundado em &nbsp</h2>
+                                        </div>
+                                        <h2 style="color:#50c878;" > {{$info['equipa']->created_at}}</h2>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="site-section-heading">
+                                            <h2 class="mb-1">Torneios vencidos &nbsp</h2><br>
+                                        </div>
+                                        <h2 style="color:#50c878;" class="text-center">{{$info['equipa']->num_vitorias}}</h2>
+
+                                    </div>
+
+
+
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
+                                <div class="site-section-heading w-border col-md-6">
                                     <h2 class="mb-5">membros</h2>
                                 </div>
                             </div>
@@ -55,15 +81,15 @@
                                     <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
                                         <div class="team-member">
                                             @if($user->imagem_path != null)
-                                                <img src="{{asset('storage/'.$user->imagem_path)}}" alt="Image" class="img-fluid">
+                                                <img src="{{asset('storage/'.$user->imagem_path)}}" alt="Image" class="img-thumbnail" height="200" width="200">
                                             @else
-                                                <img src="{{asset('images/person_1.jpg')}}" alt="Image" class="img-fluid">
+                                                <img src="{{asset('images/person_1.jpg')}}" alt="Image" class="img-thumbnail">
                                             @endif
 
 
                                             <div class="text">
 
-                                                <h2 class="mb-2 font-weight-light h4">{{$user->nick}}</h2>
+                                                <h2 class="mb-2 font-weight-light h4"><strong>{{$user->nick}}</strong></h2>
                                                 <p>
                                                     <a href="/users/{{$user->id}}" class="text-white p-2">Perfil</a>
                                                 </p>
@@ -77,11 +103,11 @@
                                         <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
                                             <div class="team-member">
 
-                                                <img src="{{asset('images/add.png')}}" alt="Image" class="img-fluid">
+                                                <img src="{{asset('images/add.png')}}" alt="Image" class="img-fluid" height="200" width="200">
 
                                                 <div class="text">
 
-                                                    <h2 class="mb-2 font-weight-light h4">{{'Novo membro'}}</h2>
+                                                    <h2 class="mb-2 font-weight-light h4"><strong>{{'Novo membro'}}</strong></h2>
                                                     <p>
                                                         <a href="/convidar" class="text-white p-2">Convidar</a>
                                                     </p>
@@ -92,37 +118,7 @@
                                 @endguest
 
                             </div>
-                            <br>
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-1">fundado em</h2><br>
-                                </div>
-                            </div>
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-5">{{$info['equipa']->created_at}}</h2>
-                            </div>
 
-                            <br>
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-1">partidas vencidas</h2><br>
-                                </div>
-
-                            </div>
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-5">{{$info['equipa']->num_vitorias}}</h2>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-1">torneios vencidos</h2><br>
-                                </div>
-
-                            </div>
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-5">{{$info['equipa']->torneios_vencidos}}</h2>
-                            </div>
-                            <br>
                         </div>
                     </div>
 

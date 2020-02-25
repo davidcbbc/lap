@@ -33,4 +33,6 @@ Route::post('/definicoes','UserController@editar')->middleware('verified');
 
 Route::get('/torneio/{id}','TorneioController@show');
 
+Route::post('/torneio/registar','TorneioController@registarEquipa');
+
 

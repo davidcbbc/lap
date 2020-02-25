@@ -28,63 +28,45 @@
                 <div class="container">
                     <div class="site-section">
                         <div class="container" data-aos="fade-up">
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-5">{{$info['user']->nick}}</h2>
-                                    <p>{{$info['user']->name}}</p>
-                                </div>
-                            </div>
 
-                            @if($info['user']->imagem_path != null)
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-5 w-border col-md-3 mx-auto">
-                                    <img src="{{asset('storage/'.$info['user']->imagem_path)}}" class="img-thumbnail" alt="Imagem">
-                                </div>
-                            </div>
-                            @endif
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-2">Faculdade</h2><br>
-                                </div>
-                            </div>
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-4">UFP</h2>
-                            </div>
-                            <br>
 
-                            <br>
-                            @if($info['user']->equipa_id !=null)
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-1">Equipa</h2><br>
-                                </div>
 
-                            </div>
 
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-4">{{$info['user']->equipa->nome}}</h2>
-                            </div>
-                            <br>
-                            @endif
-                            <div class="row">
-                                <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
-                                    <h2 class="mb-1">% de headshots</h2><br>
+                            <div class="row row-header">
+                                <div class="col-sm">
+                                    @if($info['user']->imagem_path != null)
+                                    <img style="border: transparent;background-color: transparent;" src="{{asset('storage/'.$info['user']->imagem_path)}}" class="img-thumbnail" alt="Imagem" height="300" width="300">
+                                    @else
+                                        <img style="border: transparent;background-color: transparent;" src="{{asset('images/person_1.jpg')}}" class="img-thumbnail" alt="Imagem" height="300" width="300">
+                                    @endif
+                                </div>
+                                <div class="col-sm">
+                                    <div class="site-section-heading text-center mb-2 w-border mx-auto">
+                                        <h2 class="">{{$info['user']->name}}</h2>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="site-section-heading">
+                                            <h2 class="">Nickname &nbsp</h2>
+                                        </div>
+                                        <h2 style="color:#50c878;" >{{$info['user']->nick}}</h2>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="site-section-heading">
+                                            <h2 class="mb-1">Equipa &nbsp</h2><br>
+                                        </div>
+                                        @if($info['user']->equipa != null)
+                                        <h2 style="color:#50c878;" class="text-center">{{$info['user']->equipa->nome}}</h2>
+                                        @else
+                                            <h2 style="color: grey;" class="text-center">Sem equipa</h2>
+                                        @endif
+                                    </div>
+
+
+
                                 </div>
                             </div>
-                            <div class ="row">
-                                <h2 class="text-center mx-auto mb-4">60%</h2>
-                            </div>
-                            <br>
-                        </div>
-                        <div class="row">
-                            <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
-                                <h2 class="mb-1">MVPs totais</h2><br>
-                            </div>
-                        </div>
-                        <div class ="row">
-                            <h2 class="text-center mx-auto mb-4">24</h2>
-                        </div>
-                        <br>
                     </div>
 
                 </div>

@@ -42,4 +42,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(\App\Equipa::class);
     }
 
+    /**
+     * @return bool boolean que valida se e capitao da sua equipa
+     */
+    public function isCapitao() {
+        $equipa = $this->equipa;
+        if($equipa == null) return false;
+        if($equipa->user_id == $this->id) return true;
+        return false;
+    }
+
 }
