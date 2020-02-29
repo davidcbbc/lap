@@ -31,6 +31,8 @@ Route::get('/definicoes','UserController@edit')->middleware('verified');
 
 Route::post('/definicoes','UserController@editar')->middleware('verified');
 
+Route::post('/definicoes/sair','UserController@sair')->middleware('verified');
+
 Route::get('/torneio/{id}','TorneioController@show');
 
 Route::post('/torneio/registar','TorneioController@registarEquipa');

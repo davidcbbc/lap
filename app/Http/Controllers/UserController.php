@@ -28,6 +28,13 @@ class UserController extends Controller
         return view('settings');
     }
 
+    // sai ou elemina a equipa
+    public function sair(Request $request) {
+        dd($request);
+    }
+
+
+
     //edita um user
     public function editar(Request $request){
 

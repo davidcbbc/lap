@@ -60,19 +60,19 @@
                                     </div>
                                 @endif
                             <form action="/definicoes" class="contact-form" method="POST" enctype="multipart/form-data">
-                                {{ csrf_field() }}
+                                    {{ csrf_field() }}
 
-                                <div class="row form-group">
-                                    <div class="col-md-12 mb-3 mb-md-0">
-                                        <label class="font-weight-bold" for="fullname">Editar Nickname</label>
-                                        <input type="text" name="nick" id="user" class="form-control"
-                                               placeholder="Nickname" value="{{Auth::user()->nick}}">
+                                    <div class="row form-group">
+                                        <div class="col-md-12 mb-3 mb-md-0">
+                                            <label class="font-weight-bold" for="fullname">Editar Nickname</label>
+                                            <input type="text" name="nick" id="user" class="form-control"
+                                                   placeholder="Nickname" value="{{Auth::user()->nick}}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row form-group">
-                                    <div class="col-md-3 mb-5 mb-md-2">
-                                        <div class="input-group image-preview">
+                                    <div class="row form-group">
+                                        <div class="col-md-3 mb-5 mb-md-2">
+                                            <div class="input-group image-preview">
 
 
                                                 <span class="input-group-btn">
@@ -85,20 +85,31 @@
 
                     </div>
                 </span>
-                                        </div><!-- /input-group image-preview [TO HERE]-->
+                                            </div><!-- /input-group image-preview [TO HERE]-->
 
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <input type="submit" value="Editar" class="btn btn-primary py-3 px-4">
+                                    <div class="row form-group">
+                                        <div class="col-md-12">
+                                            <input type="submit" value="Editar" class="btn btn-primary py-3 px-4">
 
+                                        </div>
                                     </div>
-                                </div>
 
 
-                            </form>
+                                </form>
+                                @if(Auth::user()->equipa != null)
+                                    <form action="/definicoes/sair" class="contact-form" method="POST" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <div class="row form-group">
+                                            <div class="col-md-12">
+                                                <input type="submit" value="{{Auth::user()->isCapitao()? "Eleminar equipa" : "Abandonar equipa"}}" class="btn btn-danger py-3 px-4">
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                @endif
 
 
                         </div>

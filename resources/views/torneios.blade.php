@@ -62,10 +62,10 @@
                                             </div>
                                         </form>
                                         @endif
+                                    @elseif(Auth::user()->equipa == null)
+                                        <p>Entra numa equipa para poderes participar no torneio.</p>
                                     @elseif(Auth::user()->equipa->torneios->contains($torneio))
                                         <p style="color: #50c878">A tua equipa está registada no torneio!</p>
-                                    @elseif(Auth::user()->equipa == null)
-                                        <p>Entra numa equipa para poderes particiar no torneio.</p>
                                     @elseif(!Auth::user()->isCapitao())
                                         <p>Apenas o capitão da tua equipa pode registar a equipa no torneio.</p>
 
