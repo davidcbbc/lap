@@ -15,7 +15,7 @@ class AddEquipaIdToUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('equipa_id')->nullable();
-            $table->foreign('equipa_id')->references('id')->on('equipas');
+            $table->foreign('equipa_id')->references('id')->on('equipas')->onDelete('set null');
         });
     }
 

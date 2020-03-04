@@ -37,6 +37,22 @@
 
             <div class="site-section">
                 <div class="container">
+            <form action="/search" method="POST" role="search">
+                {{ csrf_field() }}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q"
+                           placeholder="Search users"> <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+                </span>
+                </div>
+            </form>
+                </div>
+            </div>
+
+            <div class="site-section">
+                <div class="container">
                     <div class="row">
 
                         <table class ="table">
@@ -45,8 +61,8 @@
                                 <th scope="col">Nome</th>
                                 <th scope="col">Total Jogadores</th>
                                 <th scope="col">Capitão</th>
-                                <th scope="col">Torneios</th>
-                                <th scope="col">Vitórias</th>
+                                <th scope="col">Torneios Vencidos</th>
+
 
                             </tr>
                             </thead>
@@ -54,16 +70,15 @@
                             @foreach($equipas as $equipa)
                                 <tr>
                                     <th><a href="{{"equipas/" . $equipa->id}}">{{$equipa->nome}}</a></th>
-                                    <td>{{$equipa->num_jogadores}}</td>
+                                    <td>{{$equipa->users->count()}}</td>
                                     <td><a href="{{"/users/" . $equipa->user_id}}">{{\App\User::find($equipa->user_id)->nick}}</a></td>
                                     <td>{{$equipa->torneios_vencidos}}</td>
-                                    <td>{{$equipa->num_vitorias}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
 
                         </table>
-
+                        {{$equipas->links()}}
 
                     </div>
                 </div>

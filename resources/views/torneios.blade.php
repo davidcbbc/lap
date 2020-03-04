@@ -48,7 +48,7 @@
                                     <p style="color: orangered">{{$errors->first()}}</p>
                                 @endif
                                 @if(Auth::user()->isCapitao() && !Auth::user()->equipa->torneios->contains($torneio))
-                                    @if(Auth::user()->equipa->users->count() > 5)
+                                    @if(Auth::user()->equipa->users->count() > 5) <!-- TODO MUDAR ISTO PARA < 5 -->
                                         <p>A tua equipa tem que ter pelo menos 5 jogadores para entrar no torneio.</p>
                                         @else
                                         <form action="/torneio/registar" class="contact-form" method="POST" enctype="multipart/form-data">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Equipa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -29,15 +30,22 @@ class UserController extends Controller
     }
 
     // sai ou elemina a equipa
-    public function sair(Request $request) {
-        dd($request);
+    public function sair() {
+        if(Auth::user()->isCapitao()){
+            // se for capitao remove a equipa
+            Auth::user()->equipa->delete();
+        } else {
+            // senao mete a equipa a null
+            Auth::user()->equipa_id = null;
+            Auth::user()->save();
+        }
+        return redirect()->back();
     }
 
 
 
     //edita um user
     public function editar(Request $request){
-
         $validation = $request->validate([
             'nick' => ['max:10'],
             'imagem' => 'file|image|mimes:jpeg,png|max:2048'

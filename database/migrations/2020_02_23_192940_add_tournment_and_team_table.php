@@ -15,7 +15,7 @@ class AddTournmentAndTeamTable extends Migration
     {
         Schema::create('torneios_equipas', function (Blueprint $table) {
             $table->unsignedBigInteger("equipa_id");
-            $table->foreign('equipa_id')->references('id')->on('equipas');
+            $table->foreign('equipa_id')->references('id')->on('equipas')->onDelete('cascade');
             $table->unsignedBigInteger("torneio_id");
             $table->foreign('torneio_id')->references('id')->on('torneios');
         });
