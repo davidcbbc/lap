@@ -62,12 +62,17 @@ class RegisterController extends Controller
             'email.unique' => 'Email já existe.',
             'password.min' => 'Passoword tem que ter no mínimo 8 caracteres',
             'email' => 'Email inválido.',
-            'nick.min' => 'Nick tem que ter no mínimo 3 caracteres.'
+            'nick.min' => 'Nick tem que ter no mínimo 3 caracteres.',
+            'numero_aluno.required' => 'Escreva um user do portal UFP.',
+            'numero_aluno.max' => 'Número de aluno do portal UFP tem 5 dígitos.',
+            'numero_aluno.min' => 'Número de aluno do portal UFP tem 5 dígitos.',
+            'pass_aluno.required' => 'Escreva uma password do portal UFP.',
         ];
-
 
         return Validator::make($data, [
             'name' => 'required|min:4|max:30',
+            'numero_aluno' => 'required|min:5|max:5',
+            'pass_aluno' => 'required',
             'email' => 'required|unique:users|email:rfc',
             'password' => 'required|confirmed|min:8',
             'nick' => 'required|min:3|unique:users|max:10'
@@ -89,7 +94,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'nick' => $data['nick'],
-            'faculdade' => $data['faculdade']
+            'numero_aluno' => $data['numero_aluno']
         ]);
     }
 }

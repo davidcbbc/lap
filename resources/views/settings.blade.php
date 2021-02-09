@@ -92,7 +92,7 @@
 
                                     <div class="row form-group">
                                         <div class="col-md-12">
-                                            <input type="submit" value="Editar" class="btn btn-primary py-3 px-4">
+                                            <input type="submit" value="Confirmar" class="btn btn-primary py-3 px-4">
 
                                         </div>
                                     </div>

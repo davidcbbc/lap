@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->integer('headshots')->default(0);
             $table->integer('mvps')->default(0);
             $table->string('email')->unique();
-            $table->string('faculdade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -76,20 +76,6 @@
                                 </div>
 
 
-                                <div class="row form-group">
-                                    <div class="col-md-12 mb-3 mb-md-0">
-                                        <label class="font-weight-bold" for="fullname">Faculdade</label>
-                                        <select class="form-control" name="faculdade">
-                                            <option value="ufp">UFP</option>
-                                            <option value="feup">FEUP</option>
-                                            <option value="isep">ISEP</option>
-                                            <option value="outro">Outra</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-
-
 
                                 <div class="row form-group">
                                     <div class="col-md-12">
@@ -104,6 +90,24 @@
                                         <input type="password" name="password_confirmation" id="password2" class="form-control" placeholder="Password">
                                     </div>
                                 </div>
+                                <br>
+                                <p>As seguintes informações servem para garantir a exclusividade do torneio aos alunos inscritos na UFP</p>
+
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <label class="font-weight-bold" for="message">Número de aluno</label>
+                                        <input type="number" name="numero_aluno" id="numero_aluno" class="form-control" placeholder="Número de aluno">
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <label class="font-weight-bold" for="message">Password do portal UFP - portal.ufp.pt</label>
+                                        <input type="password" name="pass_aluno" id="pass_aluno" class="form-control" placeholder="Password">
+                                    </div>
+                                </div>
+                          
+
 
                                 <div class="row form-group">
                                     <div class="col-md-12">
