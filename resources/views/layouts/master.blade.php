@@ -32,9 +32,9 @@
 
         @include('layouts.partials.navigation')
 
-
+        <main class="container">
         @yield('content')
-
+        </main>
         @include('layouts.partials.footer')
 
     </body>

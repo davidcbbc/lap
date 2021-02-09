@@ -18,10 +18,18 @@ class TorneioController extends Controller
     }
 
 
+    public function ver(Request $request){
+        dd($request);
+        return view('torneiro');
+    }
 
 
     public function show($id){
         $torneio = Torneio::findOrFail($id);
+        if($torneio->data_inicio <= Carbon::now()){
+            // caso o torneio ja tenha comecado
+            return view('torneio');
+        }
         return view('torneios', compact('torneio'));
     }
 

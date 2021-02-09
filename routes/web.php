@@ -37,4 +37,6 @@ Route::get('/torneio/{id}','TorneioController@show');
 
 Route::post('/torneio/registar','TorneioController@registarEquipa');
 
+Route::get('/torneio/ver','TorneioController@ver');
+
 
