@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/flaticon/font/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('css/fl-bigmug-line.css')}}">
+    <link rel="stylesheet" href="{{asset('css/popup.css')}}">
 
 
     <link rel="stylesheet" href="{{asset('css/aos.css')}}">
@@ -29,13 +30,17 @@
 
 
     <body id="page-top" class="index">
+      
 
         @include('layouts.partials.navigation')
 
         <main class="container">
+          
         @yield('content')
+        <div id="msgbox-area" class="msgbox-area"></div>
         </main>
         @include('layouts.partials.footer')
+        
 
     </body>
 

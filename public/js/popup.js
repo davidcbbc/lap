@@ -1,70 +1,10 @@
-
-    <footer class="site-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="mb-5">
-                <h3 class="footer-heading mb-4">Sobre UFP eSports</h3>
-                <p>Somos uma liga eSports com base nos alunos universitários.</p>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-5 mb-lg-0">
-
-
-              <div class="row">
-                <div class="col-md-12">
-                  <h3 class="footer-heading mb-4">Segue-nos</h3>
-
-                  <div>
-                    <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-
-
-          </div>
-          <div class="row pt-5 mt-5 text-center">
-            <div class="col-md-12">
-              <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script data-cfasync="false" src="{{asset('/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </footer>
-
-    </div>
-
-    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('js/input-file-preview.js')}}"></script>
-    <script src="{{asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
-    <script src="{{asset('js/jquery-ui.js')}}"></script>
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('js/mediaelement-and-player.min.js')}}"></script>
-    <script src="{{asset('js/jquery.stellar.min.js')}}"></script>
-    <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
-    <script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
-    <script src="{{asset('js/aos.js')}}"></script>
-    <script src="{{asset('js/circleaudioplayer.js')}}"></script>
-    
-    @if(!empty(session('message')))
-    <script> 
-      class MessageBox {
+class MessageBox {
     constructor(id, option) {
       this.id = id;
       this.option = option;
     }
     
-    show(msg, label = "FECHAR", callback = null) {
+    show(msg, label = "CLOSE", callback = null) {
       if (this.id === null || typeof this.id === "undefined") {
         // if the ID is not set or if the ID is undefined
         
@@ -163,16 +103,41 @@
       });
     }
   }
-      let msgboxbox = new MessageBox("#msgbox-area", {
-      closeTime: 10000,
-      hideCloseButton: false,
-      hideCloseButton: true
-      });
-      var msg = {!! json_encode(session('message')) !!};
-      msgboxbox.show(msg)
-      </script>
-    @endif
-    
+  /*
+  let msgboxShowMessage = document.querySelector("#msgboxShowMessage");
+  let msgboxHiddenClose = document.querySelector("#msgboxHiddenClose");
+  
+  // Creation of Message Box class, and the sample usage
+  let msgboxbox = new MessageBox("#msgbox-area", {
+    closeTime: 10000,
+    hideCloseButton: false
+  });
+  let msgboxboxPersistent = new MessageBox("#msgbox-area", {
+    closeTime: 0
+  });
+  let msgboxNoClose = new MessageBox("#msgbox-area", {
+    closeTime: 5000,
+    hideCloseButton: true
+  });*/
+  
+  /*document.querySelector("#msgboxPersistent").addEventListener("click", function() {
+    msgboxboxPersistent.show("Hello! I am a persistent message box! I will hide myself if you close me.");
+  });*/
+  
 
-
-    <script src="{{asset('js/main.js')}}"></script>
+  /*
+  msgboxShowMessage.addEventListener("click", function() {
+    msgboxbox.show("Hello! I am a non-persistent message box! I will hide myself automatically after 5 seconds, but you may also close me.", null);
+  });*/
+  
+  /*
+  msgboxHiddenClose.addEventListener("click", function() {
+    msgboxNoClose.show("Hello! My close button is hidden, but I will close myself after 5 seconds.");
+  });
+  
+  // Show the message at the beginning
+  msgboxboxPersistent.show(
+    "Hello! I am a message box! I will appear on the page load period. I also have a callback. You may check on 'Console' to see.",
+    "CALLBACK", () => {
+    console.log("I am the callback! Of course, you may add various javascript codes to make the callback function colourful.");
+  });*/

@@ -78,7 +78,7 @@ class RegisterController extends Controller
         $this->guard()->login($user);
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+                        ?: redirect($this->redirectPath())->with('message','Registo efetuado com sucesso , por favor confirma o teu e-mail.');
     }
 
     /**
