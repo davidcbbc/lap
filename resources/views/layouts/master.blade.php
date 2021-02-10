@@ -38,7 +38,6 @@
   <div id="msgbox-area" class="msgbox-area"></div>
   @include('layouts.partials.footer')
 
-
 </body>
 
 
