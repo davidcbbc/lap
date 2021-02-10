@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -107,11 +108,12 @@ class RegisterController extends Controller
             'numero_aluno.max' => 'Número de aluno do portal UFP tem 5 dígitos.',
             'numero_aluno.min' => 'Número de aluno do portal UFP tem 5 dígitos.',
             'pass_aluno.required' => 'Escreva uma password do portal UFP.',
+            'numero_aluno.unique' => 'Número de aluno já registado, caso seja necessário , contacte aafp.eventos@ufp.edu.pt'
         ];
 
         return Validator::make($data, [
             'name' => 'required|min:4|max:30',
-            'numero_aluno' => 'required|min:5|max:5',
+            'numero_aluno' => 'required|min:5|max:5|unique:users',
             'pass_aluno' => 'required',
             'email' => 'required|unique:users|email:rfc',
             'password' => 'required|confirmed|min:8',
