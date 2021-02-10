@@ -7,6 +7,9 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -38,6 +41,43 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        // Checkar se o user e aluno da UFP
+
+        $client = new Client(['http_errors' => false]);
+        // usa api da faculdade para ver se o user e valido
+        try {
+            $res = $client->request('POST', 'https://siws.ufp.pt/api/v1/login', [
+                'form_params' => [
+                    'username' => $request->input('numero_aluno'),
+                    'password' => $request->input('pass_aluno'),
+                ]
+            ]);
+        } catch(\Throwable $e){
+            // se nao conseguir fazer a request
+            $errors=array("Sem resposta do servidor da ufp. Tenta mais tarde ou envia e-mail para aafp.eventos@ufp.edu.pt");
+            return redirect()->back()->withErrors($errors);
+        }
+
+        // depois de ver a api , vamos checkar o status code , qql coisa fora de 200 nao esta correto
+        if($res->getStatusCode()!=200){
+            // caso nao estam corretas
+            $errors=array("User do portal não está correto, por favor usa umas credenciais válidas do portal - https://portal.ufp.pt");
+            return redirect()->back()->withErrors($errors);
+        }
+        
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 
     /**
