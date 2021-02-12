@@ -1,42 +1,42 @@
 <?php
 
 
+use Illuminate\Support\Facades\Auth;
 
+Route::get('/admin', 'AdminController@index');
 
 Route::get('/', 'GuestController@index');
 
-Route::get('/equipas/','EquipasController@index');
+Route::get('/equipas', 'EquipasController@index');
 
-Route::get('/equipas/{id}','EquipasController@show');
+Route::get('/equipas/{id}', 'EquipasController@show');
 
-Route::get('/users/{id}','UserController@show');
+Route::get('/users/{id}', 'UserController@show');
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/equipa/create','EquipasController@create')->middleware('auth','noEquipa','verified');
+Route::get('/equipa/create', 'EquipasController@create')->middleware('auth', 'noEquipa', 'verified');
 
-Route::post('/equipa/create','EquipasController@add')->middleware('auth','noEquipa','verified');
+Route::post('/equipa/create', 'EquipasController@add')->middleware('auth', 'noEquipa', 'verified');
 
-Route::post('/equipa/aceitar','EquipasController@aceitar')->middleware('auth','noEquipa','verified');
+Route::post('/equipa/aceitar', 'EquipasController@aceitar')->middleware('auth', 'noEquipa', 'verified');
 
-Route::get('/notificacoes','ConviteController@show')->middleware('verified');
+Route::get('/notificacoes', 'ConviteController@show')->middleware('verified');
 
-Route::get('/convidar','CapitaoController@show');
+Route::get('/convidar', 'CapitaoController@show');
 
-Route::post('/convidar','CapitaoController@convidar');
+Route::post('/convidar', 'CapitaoController@convidar');
 
-Route::get('/definicoes','UserController@edit')->middleware('verified');
+Route::get('/definicoes', 'UserController@edit')->middleware('verified');
 
-Route::post('/definicoes','UserController@editar')->middleware('verified');
+Route::post('/definicoes', 'UserController@editar')->middleware('verified');
 
-Route::post('/definicoes/sair','UserController@sair')->middleware('verified');
+Route::post('/definicoes/sair', 'UserController@sair')->middleware('verified');
 
-Route::get('/torneio/{id}','TorneioController@show');
+Route::get('/torneio/{id}', 'TorneioController@show');
 
-Route::post('/torneio/registar','TorneioController@registarEquipa');
+Route::post('/torneio/registar', 'TorneioController@registarEquipa');
 
-Route::get('/torneio/ver','TorneioController@ver');
-
-
+Route::get('/torneio/ver', 'TorneioController@ver');
