@@ -42,7 +42,9 @@
                         </div>
                     </div>
                     <div class="row">
-
+                        @if($info['torneios']->isEmpty())
+                            <p>Sem torneios de momento</p>
+                        @endif
                         @foreach($info['torneios'] as $torneio)
                             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                                 <a href="/torneio/{{$torneio->id}}" class="unit-9">

@@ -33,7 +33,7 @@ class ConviteEquipa extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database','mail'];
     }
 
     /**
@@ -44,10 +44,16 @@ class ConviteEquipa extends Notification
      */
     public function toMail($notifiable)
     {
+
+        $equipa = \App\Equipa::find($this->equipaId);
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Novo convite!')
+                    ->greeting('Olá!')
+                    ->line('Foste convidado para te juntares a ' . $equipa)
+                    ->action('Link', url('/'))
+                    ->line('Acede a este link para tomares uma decisão')
+                    ->line('Os melhores cumprimentos,')
+                    ->line('Eventos AAFP')
     }
 
     /**

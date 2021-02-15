@@ -56,6 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getNomeEquipa()
     {
+        if($this->equipa == null) return "-";
         return $this->equipa->nome;
     }
 }
