@@ -53,7 +53,7 @@ class ConviteEquipa extends Notification
                     ->action('Link', url('/'))
                     ->line('Acede a este link para tomares uma decisão')
                     ->line('Os melhores cumprimentos,')
-                    ->line('Eventos AAFP')
+                    ->line('Eventos AAFP');
     }
 
     /**
