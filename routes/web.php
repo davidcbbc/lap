@@ -3,7 +3,19 @@
 
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/admin', 'AdminController@index')->middleware('auth', 'admin');
+
+Route::get('/admin/equipas', 'AdminController@equipas')->middleware('auth', 'admin');
+
+Route::get('/admin/torneios', 'AdminController@torneios')->middleware('auth', 'admin');
+
+Route::get('/admin/criar/torneio', 'AdminController@criarTorneioView')->middleware('auth', 'admin');
+
+Route::post('/admin/criar/torneio', 'AdminController@criarTorneio')->middleware('auth', 'admin');
+
+Route::get('/admin/equipas/ver/{equipa}', 'AdminController@verEquipa')->middleware('auth', 'admin');
+
+Route::get('/admin/torneios/ver/{torneio}', 'AdminController@verTorneio')->middleware('auth', 'admin');
 
 Route::get('/', 'GuestController@index');
 

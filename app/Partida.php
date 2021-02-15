@@ -8,7 +8,8 @@ class Partida extends Model
 {
     //
 
-    public function torneio(){
+    public function torneio()
+    {
         return $this->belongsTo(\App\Torneio::class);
     }
 }

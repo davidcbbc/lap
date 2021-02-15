@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','nick','numero_aluno'
+        'name', 'email', 'password', 'nick', 'numero_aluno'
     ];
 
     /**
@@ -38,18 +38,24 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
-    public function equipa() {
+    public function equipa()
+    {
         return $this->belongsTo(\App\Equipa::class);
     }
 
     /**
      * @return bool boolean que valida se e capitao da sua equipa
      */
-    public function isCapitao() {
+    public function isCapitao()
+    {
         $equipa = $this->equipa;
-        if($equipa == null) return false;
-        if($equipa->user_id == $this->id) return true;
+        if ($equipa == null) return false;
+        if ($equipa->user_id == $this->id) return true;
         return false;
     }
 
+    public function getNomeEquipa()
+    {
+        return $this->equipa->nome;
+    }
 }

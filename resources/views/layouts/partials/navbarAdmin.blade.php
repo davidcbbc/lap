@@ -7,12 +7,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url ('admin/recruitment') }}">
+                <a class="nav-link" href="{{ url ('admin/equipas') }}">
                     Equipas
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url ('admin/produtos') }}">
+                <a class="nav-link" href="{{ url ('admin/torneios') }}">
                     Torneios
                 </a>
             </li>
