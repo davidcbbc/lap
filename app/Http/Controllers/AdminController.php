@@ -41,18 +41,14 @@ class AdminController extends Controller
             ->where('equipa_id', $equipa->id);
         return view('admin.verEquipa', ['equipa' => $equipa], ['players' => $players]);
     }
-
+    //ver se funciona
     public function verTorneio(Torneio $torneio)
     {
-
-        $torneioId = $torneio->id;
-
         $equipas = DB::table('equipas')
             ->leftJoin('torneios_equipas', 'equipas.id', '=', 'torneios_equipas.equipa_id')
             ->select('equipas.*')
             ->where('torneios_equipas.equipa_id', '=', 'equipas.id')
             ->get();
-        print(count($equipas));
 
         print_r($equipas);
     }
