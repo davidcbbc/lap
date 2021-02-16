@@ -128,7 +128,7 @@
             <div class="bg-primary" data-aos="fade">
                 <div class="container">
                     <div class="row">
-                        <p1>Universidade Fernando Pessoa eSports</p1>
+                        <p1>Nova et nove</p1>
 
                     </div>
                 </div>

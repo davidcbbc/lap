@@ -21,6 +21,8 @@ Route::get('/', 'GuestController@index');
 
 Route::get('/equipas', 'EquipasController@index');
 
+Route::get('/equipas/search', 'EquipasController@search');
+
 Route::get('/equipas/{id}', 'EquipasController@show');
 
 Route::get('/users/{id}', 'UserController@show');

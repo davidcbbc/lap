@@ -37,20 +37,19 @@
 
             <div class="site-section">
                 <div class="container">
-            <form action="/search" method="POST" role="search">
-                {{ csrf_field() }}
-                <div class="input-group">
-                    <input type="text" class="form-control" name="q"
-                           placeholder="Search users"> <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-                </span>
-                </div>
-            </form>
+                    <form action="/equipas/search" method="GET" role="search">
+                        <div class="input-group">
+                                <input type="text" class="form-control" name="text"
+                                    placeholder="Procurar por equipa">
+                                <button type="submit" class="btn btn-secondary">
+                                    <span class="">Procurar</span>
+                                </button>
+                                    
+                        </div>
+                    </form>
                 </div>
             </div>
-
+        
             <div class="site-section">
                 <div class="container">
                     <div class="row">
@@ -78,6 +77,9 @@
                             </tbody>
 
                         </table>
+                        @if($equipas->isEmpty())
+                            <p>Sem resultados</p>
+                            @endif
                         {{$equipas->links()}}
 
                     </div>
@@ -87,7 +89,7 @@
             <div class="bg-primary" data-aos="fade">
                 <div class="container">
                     <div class="row">
-                        <p1>Universidade Fernando Pessoa eSports</p1>
+                        <p1>Nova et nove</p1>
 
                     </div>
                 </div>

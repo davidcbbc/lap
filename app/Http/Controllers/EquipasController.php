@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class EquipasController extends Controller
 {
+
+    public function search(Request $request){
+        // search for team
+        $equipas=\App\Equipa::where('nome','like','%'.$request->input('text').'%')->paginate(10);
+        return view('equipas',compact('equipas'));
+    }
+
     public function index(){
         $equipas = \App\Equipa::orderBy('torneios_vencidos')->paginate(10);
         return view('equipas',compact('equipas'));
