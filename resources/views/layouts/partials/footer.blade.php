@@ -1,11 +1,24 @@
 
     <footer class="site-footer">
         <div class="container">
+
+          
+
+
           <div class="row">
+
+            <div class="row">
+              <div class="col-lg-4">
+                <div>
+                  <img src="https://i.ibb.co/1Xn8hq0/aafp.png" class="rounded float-left" alt="logo" width="300" style="marker-top: 100%">
+                </div>
+              </div>
+            </div>
+
             <div class="col-lg-4">
               <div class="mb-5">
-                <h3 class="footer-heading mb-4">Sobre UFP eSports</h3>
-                <p>Somos uma liga eSports com base nos alunos universitários.</p>
+                <h3 class="footer-heading mb-4">Sobre</h3>
+                <p>AAFP - Associação Académica Fernando Pessoa é uma organização académica sem fins lucrativos localizada na UFP.</p>
               </div>
             </div>
             <div class="col-lg-4 mb-5 mb-lg-0">
@@ -16,7 +29,7 @@
                   <h3 class="footer-heading mb-4">Segue-nos</h3>
 
                   <div>
-                    <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                    <a href="https://www.facebook.com/aafp.oficial" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
                   </div>
                 </div>
               </div>
@@ -29,9 +42,9 @@
           <div class="row pt-5 mt-5 text-center">
             <div class="col-md-12">
               <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script data-cfasync="false" src="{{asset('/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              
+              Copyright &copy;<script data-cfasync="false" src="{{asset('/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by Capela and Rolotes
+              
               </p>
             </div>
 
