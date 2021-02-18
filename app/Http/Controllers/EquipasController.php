@@ -35,6 +35,10 @@ class EquipasController extends Controller
     //funcao para aceitar convites de equipas
     public function aceitar(Request $request){
         $user = Auth::user();
+        // get the team notification
+        foreach ($user->unreadNotifications as $notif) {
+            dd($notif);
+        }
         $notification = $user->unreadNotifications()->first();
      if($request->opcao == "aceitar") {
          $equipaId = $notification->data['equipa_id'];

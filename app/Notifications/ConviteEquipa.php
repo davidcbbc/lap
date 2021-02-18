@@ -47,13 +47,12 @@ class ConviteEquipa extends Notification
 
         $equipa = \App\Equipa::find($this->equipaId);
         return (new MailMessage)
-                    ->subject('Novo convite!')
+                    ->level('info')
+                    ->subject('Foste convidado para uma equipa!')
                     ->greeting('Olá!')
-                    ->line('Foste convidado para te juntares a ' . $equipa)
-                    ->action('Link', url('/'))
-                    ->line('Acede a este link para tomares uma decisão')
-                    ->line('Os melhores cumprimentos,')
-                    ->line('Eventos AAFP');
+                    ->line('Foste convidado para te juntares a ' . $equipa->nome)
+                    ->action('Link', url('/notificacoes'))
+                    ->line('Acede a este link para tomares uma decisão');
     }
 
     /**

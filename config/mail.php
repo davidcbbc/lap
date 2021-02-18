@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'ufpesports@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'UFP eSports'),
+        'address' => env('MAIL_FROM_ADDRESS', 'aafp.eventos@ufp.edu.pt'),
+        'name' => env('MAIL_FROM_NAME', 'AAFP eSports'),
     ],
 
     /*

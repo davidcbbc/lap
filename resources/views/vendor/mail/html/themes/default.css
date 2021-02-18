@@ -83,6 +83,13 @@ img {
 
 /* Layout */
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 .wrapper {
     background-color: #f8fafc;
     margin: 0;

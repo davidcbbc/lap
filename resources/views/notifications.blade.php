@@ -60,7 +60,9 @@
 
                                 @if(!count($notifications))
                                     <p1>Não há nenhuma notificação para mostrar.</p1>
-                                    @endif
+                                @else
+                                    <p1>Novas notificações: <b>{{count($notifications)}}</b></p>
+                                @endif
                                 @foreach($notifications as $notification)
                                     <tr>
                                     <th>{{\App\Equipa::find($notification->data['equipa_id'])->getCapitao()->nick . ' pediu para te juntares à sua equipa'}}</th>

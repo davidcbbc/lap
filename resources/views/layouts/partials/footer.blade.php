@@ -7,13 +7,7 @@
 
           <div class="row">
 
-            <div class="row">
-              <div class="col-lg-4">
-                <div>
-                  <img src="https://i.ibb.co/1Xn8hq0/aafp.png" class="rounded float-left" alt="logo" width="300" style="marker-top: 100%">
-                </div>
-              </div>
-            </div>
+            
 
             <div class="col-lg-4">
               <div class="mb-5">
@@ -21,21 +15,23 @@
                 <p>AAFP - Associação Académica Fernando Pessoa é uma organização académica sem fins lucrativos localizada na UFP.</p>
               </div>
             </div>
+
+
             <div class="col-lg-4 mb-5 mb-lg-0">
-
-
-              <div class="row">
                 <div class="col-md-12">
                   <h3 class="footer-heading mb-4">Segue-nos</h3>
-
                   <div>
                     <a href="https://www.facebook.com/aafp.oficial" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
                   </div>
                 </div>
-              </div>
-
             </div>
 
+
+              <div class="col-lg-4">
+                <div>
+                  <img src="/images/aafp.png" alt="aafp-logo" border="0" width=250>
+                </div>
+              </div>
 
 
           </div>

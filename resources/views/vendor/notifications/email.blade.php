@@ -1,4 +1,5 @@
 @component('mail::message')
+<img src="https://i.ibb.co/Xb6hk2H/icon.png" alt="icon" border="0" class="center">
 {{-- Greeting --}}
 @if (! empty($greeting))
 # {{ $greeting }}
@@ -43,16 +44,18 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('Regards'),<br>
-{{ config('app.name') }}
+<br>
+Saudações Académicas,<br>
+Associação Académica Fernando Pessoa<br>
+<img src="https://i.ibb.co/mHWXTd0/aafp.png" alt="aafp" border="0" class="center">
 @endif
 
 {{-- Subcopy --}}
 @isset($actionText)
 @slot('subcopy')
 @lang(
-    "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser: [:actionURL](:actionURL)',
+    "Se houver alguma dificuldade em clicar no botão, por favor insira este link \n".
+    'no browser: [:actionURL](:actionURL)',
     [
         'actionText' => $actionText,
         'actionURL' => $actionUrl,

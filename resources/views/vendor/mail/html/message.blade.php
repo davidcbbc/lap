@@ -2,13 +2,12 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            Bem-vindo
+            AAFP eSports
         @endcomponent
     @endslot
 
     {{-- Body --}}
     {{ $slot }}
-    Equipa UFP eSports
 
     {{-- Subcopy --}}
     @isset($subcopy)
