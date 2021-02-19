@@ -37,5 +37,5 @@
         {{ $users->links() }}
     </div>
 </main>
-</div>
+
 @endsection

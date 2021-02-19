@@ -58,6 +58,43 @@ class AdminController extends Controller
         return view('admin.criarTorneio');
     }
 
+    public function criarNotificacaoJogador()
+    {
+        return view('admin.notiJogador')->with('users', User::all());
+    }
+
+    public function criarNotificacaoEquipa()
+    {
+        return view('admin.notiEquipa')->with('equipas', Equipa::all());
+    }
+
+    public function criarNotificacaoTodos()
+    {
+        return view('admin.notiTodos');
+    }
+
+    public function notificacoes()
+    {
+        return view('admin.notificacoes');
+    }
+
+
+    public function enviarNotificacao()
+    {
+
+        /*
+            caso seja uma notificacao para um jogador o input tem o nome 'notiJogador' e oo select tem o nome 'to' -->envias date_interval_create_from_date_string
+            caso seja uma notificacao para uma equipa o input tem o nome 'notiEquipa' e o select tem o nome 'equipa' é o id dela --> precorrer o pessoal da equipa e enviarNotificacao
+            caso seja para todos a notificacao o input tem o nome 'notiTodos' e enviamos para criarNotificacaoTodos
+            fiz isto para não termos muitas routes escusadamente
+        */
+    }
+
+
+
+
+
+
     public function criarTorneio(Request $request)
     {
         $request->validate([
