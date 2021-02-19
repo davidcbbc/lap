@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\App;
+use App\Notifications\CostumRegisterNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -27,6 +29,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new CostumRegisterNotification($this->name));
+    }
 
     /**
      * The attributes that should be cast to native types.

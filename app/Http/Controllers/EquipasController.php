@@ -50,10 +50,10 @@ class EquipasController extends Controller
                 $user->save();
                 $equipa->save();
                 $notification->markAsRead();
-                return redirect()->back()->with('sucesso', 'Convite para equipa aceite.' );
+                return redirect()->back()->with('message', 'Convite para equipa aceite.' );
             }catch (\Exception $e) {
                 // equipa eleminada
-                return redirect()->back()->with('erro', 'Convite já não é válido.' );
+                return redirect()->back()->with('message', 'Convite já não é válido.' );
             }
         }
         $notification->markAsRead();

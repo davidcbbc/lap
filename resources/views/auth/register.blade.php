@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <p>As seguintes informações servem para garantir a exclusividade do torneio aos alunos inscritos na UFP</p>
+                                <p>As seguintes informações servem para garantir a exclusividade do torneio aos alunos inscritos na UFP. Não guardamos a password do portal na nossa base de dados.</p>
 
                                 <div class="row form-group">
                                     <div class="col-md-12">

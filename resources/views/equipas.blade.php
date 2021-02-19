@@ -41,17 +41,17 @@
                         <div class="input-group">
                                 <input type="text" class="form-control" name="text"
                                     placeholder="Procurar por equipa">
-                                <button type="submit" class="btn btn-secondary">
+                                <button type="submit" class="btn btn-primary mx-3">
                                     <span class="">Procurar</span>
                                 </button>
                                     
                         </div>
                     </form>
                 </div>
-            </div>
+            
         
-            <div class="site-section">
-                <div class="container">
+            
+                <div class="container mt-5">
                     <div class="row">
 
                         <table class ="table">
@@ -84,7 +84,9 @@
 
                     </div>
                 </div>
+
             </div>
+            
 
             <div class="bg-primary" data-aos="fade">
                 <div class="container">

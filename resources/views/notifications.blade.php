@@ -67,12 +67,14 @@
                                 <div class="alert alert-danger">
                                     {{ session()->get('erro') }}
                                 </div>
+                                <br>
                             @endif
 
                             @if(session()->has('sucesso'))
                                 <div class="alert alert-success">
                                     {{ session()->get('sucesso') }}
                                 </div>
+                                <br>
                             @endif
                             
 
