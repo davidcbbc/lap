@@ -5,6 +5,19 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/admin', 'AdminController@index')->middleware('auth', 'admin');
 
+
+
+Route::get('/admin/enviar/notificacao/equipa', 'AdminController@criarNotificacaoEquipa')->middleware('auth', 'admin');
+
+Route::get('/admin/enviar/notificacao/jogador', 'AdminController@criarNotificacaoJogador')->middleware('auth', 'admin');
+
+Route::get('/admin/enviar/notificacao/todos', 'AdminController@criarNotificacaoTodos')->middleware('auth', 'admin');
+
+Route::get('/admin/notificacoes', 'AdminController@notificacoes')->middleware('auth', 'admin');
+
+
+Route::POST('admin/enviar/notificacao', 'AdminController@enviarNotificacao')->middleware('auth', 'admin');
+
 Route::get('/admin/equipas', 'AdminController@equipas')->middleware('auth', 'admin');
 
 Route::get('/admin/torneios', 'AdminController@torneios')->middleware('auth', 'admin');

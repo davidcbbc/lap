@@ -16,6 +16,11 @@
                     Torneios
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url ('admin/notificacoes') }}">
+                    Notificações
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
