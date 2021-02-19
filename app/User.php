@@ -37,6 +37,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function hasNotification(){
+        return $this->unreadNotifications->count() > 0;
+    }
+
+    public function getNotificationsCount(){
+        return $this->unreadNotifications->count();
+    }
 
     public function equipa()
     {

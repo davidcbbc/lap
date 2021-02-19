@@ -64,19 +64,38 @@
                                     <p1>Novas notificações: <b>{{count($notifications)}}</b></p>
                                 @endif
                                 @foreach($notifications as $notification)
-                                    <tr>
-                                    <th>{{\App\Equipa::find($notification->data['equipa_id'])->getCapitao()->nick . ' pediu para te juntares à sua equipa'}}</th>
-                                    <td>{{\App\Equipa::find($notification->data['equipa_id'])->nome}}</td>
-                                    <td><div class="ui-group-buttons">
-                                            <form action="/equipa/aceitar" method="POST">
-                                                @csrf
-                                                <button name="opcao" type="submit" class="btn btn-success" role="button" value="aceitar"><span class="glyphicon glyphicon-floppy-disk"></span>Aceitar</button>
-                                                <button name="opcao" type="submit" class="btn btn-danger" role="button" value ="recusar"><span class="glyphicon glyphicon-floppy-disk"></span>Recusar</button>
-                                            </form>
+                                    @if($notification->type == "App\Notifications\ConviteEquipa")
+                                        <tr>
+                                        <td>{{\App\Equipa::find($notification->data['equipa_id'])->getCapitao()->nick . ' pediu para te juntares à sua equipa'}}</td>
+                                        <th>{{\App\Equipa::find($notification->data['equipa_id'])->nome}}</th>
+                                        <th>{{$notification->created_at}}</th>
+                                        <td><div class="ui-group-buttons">
+                                                <form action="/equipa/aceitar" method="POST">
+                                                    @csrf
+                                                    <button name="opcao" type="submit" class="btn btn-success" role="button" value="aceitar">Aceitar</button>
+                                                    <button name="opcao" type="submit" class="btn btn-danger" role="button" value ="recusar">Recusar</button>
+                                                </form>
 
 
-                                        </div></td>
-                                    </tr>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td>{{$notification->data['content']}}</td>
+                                            <th>{{$notification->data['tipo']}}</th>
+                                            <th>{{$notification->created_at}}</th>
+                                        <td>
+                                            <div class="ui-group-buttons">
+                                                    <form action="/notificacoes/visto" method="POST">
+                                                        @csrf
+                                                        <button name="opcao" type="submit" class="btn btn-info" role="button">OK</button>
+                                                        <input type="hidden" id="notificationId" name="notificationId" value="{{$notification->id}}">
+                                                    </form>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
 
                             </tbody>

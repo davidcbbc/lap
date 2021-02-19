@@ -39,6 +39,8 @@ Route::post('/equipa/aceitar', 'EquipasController@aceitar')->middleware('auth', 
 
 Route::get('/notificacoes', 'ConviteController@show')->middleware('verified');
 
+Route::post('/notificacoes/visto', 'UserController@readNotification')->middleware('verified');
+
 Route::get('/convidar', 'CapitaoController@show');
 
 Route::post('/convidar', 'CapitaoController@convidar');

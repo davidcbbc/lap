@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Notifications\ConviteEquipa;
+use App\Notifications\Message;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,7 @@ class CapitaoController extends Controller
         }
         // Envia uma notificaco ao jogador escolhido
         $jogador->notify(new ConviteEquipa($idEquipa));
+        $jogador->notify(new Message('Geral','Foste convidado agorinha mesmo para uma equipa oh maluco do crl'));
         return redirect()->back()->with('message', 'Convite para ' .$request->nick. ' enviado com sucesso!' );
 
     }

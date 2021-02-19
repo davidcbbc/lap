@@ -32,12 +32,12 @@
             @else
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
+                {{ Auth::user()->name }} <b>{{Auth::user()->hasNotification() ? "(" . Auth::user()->getNotificationsCount() . ")": ""}}</b><span class="caret"></span>
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{'/users/'.Auth::user()->id}}">Perfil</a>
-                <a class="dropdown-item" href="/notificacoes">Notificações</a>
+                <a class="dropdown-item" href="/notificacoes">Notificações <b>{{Auth::user()->hasNotification() ? "(" . Auth::user()->getNotificationsCount() . ")" : ""}}</b></a>
                 <a class="dropdown-item" href="/definicoes">Definições</a>
                 <div class="dropdown-divider"></div>
                 @if(Auth::user()->equipa_id != null)

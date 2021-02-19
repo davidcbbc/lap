@@ -7,12 +7,22 @@ use App\Equipa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+
+    public function readNotification(Request $request){
+        if($request->input('notificationId')==null) return redirect()->back()->with('message','Alguma coisa correu mal, suspeito ...');
+        $notification = Auth::user()->notifications()->find($request->input('notificationId'));
+        if($notification==null) return redirect()->back()->with('message','Alguma coisa correu mal');
+        $notification->markAsRead();
+        return redirect()->back()->with('message','Notificação vista !');
     }
 
 
@@ -39,7 +49,7 @@ class UserController extends Controller
             Auth::user()->equipa_id = null;
             Auth::user()->save();
         }
-        return redirect()->back();
+        return redirect()->back()->with('message','Equipa eleminada com sucesso.');
     }
 
 

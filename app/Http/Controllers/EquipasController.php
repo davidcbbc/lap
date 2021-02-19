@@ -36,27 +36,28 @@ class EquipasController extends Controller
     public function aceitar(Request $request){
         $user = Auth::user();
         // get the team notification
+        $notification = null;
         foreach ($user->unreadNotifications as $notif) {
-            dd($notif);
+            if($notif->type == "App\Notifications\ConviteEquipa") $notification=$notif;
         }
-        $notification = $user->unreadNotifications()->first();
-     if($request->opcao == "aceitar") {
-         $equipaId = $notification->data['equipa_id'];
-         try{
-             $equipa = \App\Equipa::findOrFail($equipaId);
-             $equipa->num_jogadores++;
-             $user->equipa_id = $equipaId;
-             $user->save();
-             $equipa->save();
-             $notification->markAsRead();
-             return redirect()->back()->with('sucesso', 'Convite para equipa aceite.' );
-         }catch (\Exception $e) {
-             // equipa eleminada
-             return redirect()->back()->with('erro', 'Convite já não é válido.' );
-         }
-     }
+        //if($notification==null) return redirect()->back()->with('erro','Algo correu mal , tenta mais tarde');
+        if($request->opcao == "aceitar") {  
+            try{
+                $equipaId = $notification->data['equipa_id'];
+                $equipa = \App\Equipa::findOrFail($equipaId);
+                $equipa->num_jogadores++;
+                $user->equipa_id = $equipaId;
+                $user->save();
+                $equipa->save();
+                $notification->markAsRead();
+                return redirect()->back()->with('sucesso', 'Convite para equipa aceite.' );
+            }catch (\Exception $e) {
+                // equipa eleminada
+                return redirect()->back()->with('erro', 'Convite já não é válido.' );
+            }
+        }
         $notification->markAsRead();
-        return redirect()->back();
+        return redirect()->back()->with('message','Convite para equipa recusado');
     }
 
 
@@ -94,7 +95,7 @@ class EquipasController extends Controller
         $novaEquipa->save();
         Auth::user()->equipa_id = $novaEquipa->id;
         Auth::user()->save();
-        return redirect('equipas/' . $novaEquipa->id);
+        return redirect('equipas/' . $novaEquipa->id)->with('message','Equipa criada com sucesso!');
     }
 
 
