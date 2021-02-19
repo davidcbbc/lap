@@ -38,6 +38,24 @@
 
             <div class="site-section">
                 <div class="container">
+                    
+                    @if($type=="unread")
+                    <div class="center" style="text-align: center">
+                        <form action="/notificacoes/lidas">
+                            <button type="button" class="btn btn-outline-secondary btn-sm disabled">Por ler</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Lidas</button>
+                        </form>
+                    </div>
+                    @else
+                    <div class="center" style="text-align: center">
+                        <form action="/notificacoes">
+                            <button type="submit" class="btn btn-primary btn-sm ">Por ler</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm disabled">Lidas</button>
+                        </form>
+                    </div>
+                    @endif
+                    <br>
+                    <br>
                     <div class="row">
 
                         <table class ="table">
@@ -56,44 +74,58 @@
                                     {{ session()->get('sucesso') }}
                                 </div>
                             @endif
-                            <br>
+                            
 
                                 @if(!count($notifications))
-                                    <p1>Não há nenhuma notificação para mostrar.</p1>
+                                    <p>Não há nenhuma notificação para mostrar.</p>
                                 @else
-                                    <p1>Novas notificações: <b>{{count($notifications)}}</b></p>
+                                    @if($type=="unread")
+                                        <p>Novas notificações: <b>{{$total}}</b></p>
+                                    @else
+                                        <p>Total notificações: <b>{{$total}}</b></p>
+                                    @endif 
                                 @endif
                                 @foreach($notifications as $notification)
                                     @if($notification->type == "App\Notifications\ConviteEquipa")
-                                        <tr>
-                                        <td>{{\App\Equipa::find($notification->data['equipa_id'])->getCapitao()->nick . ' pediu para te juntares à sua equipa'}}</td>
-                                        <th>{{\App\Equipa::find($notification->data['equipa_id'])->nome}}</th>
-                                        <th>{{$notification->created_at}}</th>
-                                        <td><div class="ui-group-buttons">
-                                                <form action="/equipa/aceitar" method="POST">
-                                                    @csrf
-                                                    <button name="opcao" type="submit" class="btn btn-success" role="button" value="aceitar">Aceitar</button>
-                                                    <button name="opcao" type="submit" class="btn btn-danger" role="button" value ="recusar">Recusar</button>
-                                                </form>
+                                        @if($type=="read")
+                                            <tr>
+                                                <td>Foste convidado para uma equipa</td>
+                                                <th>Convite</th>
+                                                <th>{{Carbon\Carbon::parse($notification->created_at)->format('d M Y')}}</th>
+                                            </tr>
+                                        @else
+                                            <tr>
+                                            <td>{{\App\Equipa::find($notification->data['equipa_id'])->getCapitao()->nick . ' pediu para te juntares à sua equipa'}}</td>
+                                            <th>{{\App\Equipa::find($notification->data['equipa_id'])->nome}}</th>
+                                            <th>{{Carbon\Carbon::parse($notification->created_at)->format('d M Y')}}</th>
+                                            <td><div class="ui-group-buttons">
+                                                    <form action="/equipa/aceitar" method="POST">
+                                                        @csrf
+                                                        <button name="opcao" type="submit" class="btn btn-success" role="button" value="aceitar">Aceitar</button>
+                                                        <button name="opcao" type="submit" class="btn btn-danger" role="button" value ="recusar">Recusar</button>
+                                                    </form>
 
 
-                                            </div>
-                                        </td>
-                                        </tr>
+                                                </div>
+                                            </td>
+                                            </tr>
+                                       @endif
                                     @else
                                         <tr>
                                             <td>{{$notification->data['content']}}</td>
                                             <th>{{$notification->data['tipo']}}</th>
-                                            <th>{{$notification->created_at}}</th>
-                                        <td>
-                                            <div class="ui-group-buttons">
-                                                    <form action="/notificacoes/visto" method="POST">
-                                                        @csrf
-                                                        <button name="opcao" type="submit" class="btn btn-info" role="button">OK</button>
-                                                        <input type="hidden" id="notificationId" name="notificationId" value="{{$notification->id}}">
-                                                    </form>
-                                            </div>
-                                        </td>
+                                            <th>{{Carbon\Carbon::parse($notification->created_at)->format('d M Y')}}</th>
+                                        @if($type=="unread")
+                                            <td>
+                                                <div class="ui-group-buttons">
+                                                        <form action="/notificacoes/visto" method="POST">
+                                                            @csrf
+                                                            <button name="opcao" type="submit" class="btn btn-info" role="button">OK</button>
+                                                            <input type="hidden" id="notificationId" name="notificationId" value="{{$notification->id}}">
+                                                        </form>
+                                                </div>
+                                            </td>
+                                        @endif
                                         </tr>
                                     @endif
                                 @endforeach
@@ -101,6 +133,7 @@
                             </tbody>
 
                         </table>
+                        {{ $notifications->links() }}
 
 
                     </div>

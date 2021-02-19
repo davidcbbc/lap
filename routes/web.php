@@ -37,7 +37,9 @@ Route::post('/equipa/create', 'EquipasController@add')->middleware('auth', 'noEq
 
 Route::post('/equipa/aceitar', 'EquipasController@aceitar')->middleware('auth', 'noEquipa', 'verified');
 
-Route::get('/notificacoes', 'ConviteController@show')->middleware('verified');
+Route::get('/notificacoes', 'ConviteController@show')->middleware('auth','verified');
+
+Route::get('/notificacoes/lidas', 'ConviteController@showRead')->middleware('auth','verified');
 
 Route::post('/notificacoes/visto', 'UserController@readNotification')->middleware('verified');
 
