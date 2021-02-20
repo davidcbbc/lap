@@ -17,6 +17,7 @@ class UserController extends Controller
     }
 
 
+
     public function readNotification(Request $request){
         if($request->input('notificationId')==null) return redirect()->back()->with('message','Alguma coisa correu mal, suspeito ...');
         $notification = Auth::user()->notifications()->find($request->input('notificationId'));

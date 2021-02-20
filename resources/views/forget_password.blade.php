@@ -10,7 +10,6 @@
     <li>
         @endsection
 
-
         @section('content')
 
 
@@ -29,8 +28,8 @@
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">
-                            <h1 class="text-white">Entrar</h1>
-                            <p>ou registar.</p>
+                            <h1 class="text-white">Recuperar</h1>
+                            <p>password.</p>
                         </div>
                     </div>
                 </div>
@@ -41,9 +40,6 @@
                     <div class="row">
 
                         <div class="col-md-12 col-lg-7 mb-5">
-
-
-
 
                             @if($errors->any())
                                 <div class="alert alert-danger">
@@ -56,43 +52,28 @@
                             @endif
 
 
-                            <form action="{{route('login')}}" class="contact-form" method="POST">
+                            <form action="{{url('/password/reset')}}" class="contact-form" method="POST">
                                 {{ csrf_field() }}
+
                                 <div class="row form-group">
                                     <div class="col-md-12 mb-3 mb-md-0">
                                         <label class="font-weight-bold" for="fullname">Email</label>
-                                        <input type="text" name="email" id="user" class="form-control" placeholder="Utilizador" value="{{old('email')}}">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{old('email')}}">
                                     </div>
                                 </div>
-
+                          
 
 
                                 <div class="row form-group">
                                     <div class="col-md-12">
-                                        <label class="font-weight-bold" for="message">Password</label>
-                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                        <input type="submit" value="Recuperar" class="btn btn-primary py-3 px-4">
                                     </div>
                                 </div>
 
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <input type="submit" value="Entrar" class="btn btn-primary py-3 px-4">
-                                    </div>
-                                </div>
-
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <a href="/register">Registar</a>
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <a href="/password/forget">Perdi a password</a>
-                                    </div>
-                                </div>
 
 
                             </form>
+
                         </div>
 
 
