@@ -18,6 +18,7 @@
                     <th>Premio</th>
                     <th>Jogo</th>
                     <th>Mais</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody style="text-align: center;">
@@ -33,6 +34,9 @@
                     <td class="align-middle">{{$torneio->jogo }}</td>
                     <td class="align-middle">
                         <a href="{{ url('admin/torneios/ver',$torneio->id) }}" class="btn btn-success" style="color:white">Ver</a>
+                    </td>
+                    <td class="align-middle">
+                        <a href="{{ url('admin/torneios/editar',$torneio->id) }}" class="btn btn-danger" style="color:white">Editar</a>
                     </td>
                 </tr>
                 @endforeach

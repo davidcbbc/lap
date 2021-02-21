@@ -7,7 +7,7 @@
         @csrf
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mt-5">
             <div class="table-responsive" style="width: 50%; margin: 0 auto;">
-                <h2 class="mb-2">Criar Evento:</h2>
+                <h2 class="mb-2">Criar Torneio:</h2>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nome </span>

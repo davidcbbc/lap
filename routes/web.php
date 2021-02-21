@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Auth;
 
+
+
 Route::get('/admin', 'AdminController@index')->middleware('auth', 'admin');
 
 Route::get('/admin/equipas', 'AdminController@equipas')->middleware('auth', 'admin');
@@ -11,11 +13,15 @@ Route::get('/admin/torneios', 'AdminController@torneios')->middleware('auth', 'a
 
 Route::get('/admin/criar/torneio', 'AdminController@criarTorneioView')->middleware('auth', 'admin');
 
-Route::post('/admin/criar/torneio', 'AdminController@criarTorneio')->middleware('auth', 'admin');
+Route::POST('/admin/criar/torneio', 'AdminController@criarTorneio')->middleware('auth', 'admin');
 
 Route::get('/admin/equipas/ver/{equipa}', 'AdminController@verEquipa')->middleware('auth', 'admin');
 
 Route::get('/admin/torneios/ver/{torneio}', 'AdminController@verTorneio')->middleware('auth', 'admin');
+
+Route::get('/admin/torneios/editar/{torneio}', 'AdminController@editarTorneio')->middleware('auth', 'admin');
+
+Route::POST('/admin/torneios/editar/{torneio}', 'AdminController@updateTorneio')->middleware('auth', 'admin');
 
 Route::get('/admin/enviar/notificacao/equipa', 'AdminController@criarNotificacaoEquipa')->middleware('auth', 'admin');
 
@@ -32,9 +38,9 @@ Route::get('/', 'GuestController@index');
 
 Route::get('/equipas', 'EquipasController@index');
 
-Route::get('/users','UserController@showAll');
+Route::get('/users', 'UserController@showAll');
 
-Route::get('/users/search','UserController@search');
+Route::get('/users/search', 'UserController@search');
 
 Route::get('/equipas/search', 'EquipasController@search');
 
@@ -54,9 +60,9 @@ Route::post('/equipa/aceitar', 'EquipasController@aceitar')->middleware('auth', 
 
 Route::post('/notificacoes/visto', 'UserController@readNotification')->middleware('verified');
 
-Route::get('/notificacoes', 'ConviteController@show')->middleware('auth','verified');
+Route::get('/notificacoes', 'ConviteController@show')->middleware('auth', 'verified');
 
-Route::get('/notificacoes/lidas', 'ConviteController@showRead')->middleware('auth','verified');
+Route::get('/notificacoes/lidas', 'ConviteController@showRead')->middleware('auth', 'verified');
 
 Route::get('/convidar', 'CapitaoController@show');
 
@@ -74,8 +80,8 @@ Route::post('/torneio/registar', 'TorneioController@registarEquipa');
 
 Route::get('/torneio/ver', 'TorneioController@ver');
 
-Route::get('/password/forget','ResetPasswordController@show');
+Route::get('/password/forget', 'ResetPasswordController@show');
 
-Route::post('/password/reset','ResetPasswordController@validatePasswordRequest');
+Route::post('/password/reset', 'ResetPasswordController@validatePasswordRequest');
 
-Route::post('/password/reset/token','ResetPasswordController@resetPassword');
+Route::post('/password/reset/token', 'ResetPasswordController@resetPassword');
