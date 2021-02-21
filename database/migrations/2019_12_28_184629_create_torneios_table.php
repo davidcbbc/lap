@@ -16,6 +16,7 @@ class CreateTorneiosTable extends Migration
         Schema::create('torneios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
+            $table->string('link');
             $table->integer('max_equipas')->default(5);
             $table->integer('num_equipas')->default(0);
             $table->date('data_inicio');

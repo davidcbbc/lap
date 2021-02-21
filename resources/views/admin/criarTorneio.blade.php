@@ -13,7 +13,10 @@
                     <span class="input-group-text" id="basic-addon1">Nome </span>
                     <input type="text" name="nome" class="form-control" placeholder="Nome do Evento" aria-label="Nome" aria-describedby="basic-addon1">
                 </div>
-
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Link Tree: </span>
+                    <input type="text" name="link" class="form-control" placeholder="Link Tree" aria-label="Link" aria-describedby="basic-addon1">
+                </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Max-Equipas</span>
