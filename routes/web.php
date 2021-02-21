@@ -17,6 +17,17 @@ Route::get('/admin/equipas/ver/{equipa}', 'AdminController@verEquipa')->middlewa
 
 Route::get('/admin/torneios/ver/{torneio}', 'AdminController@verTorneio')->middleware('auth', 'admin');
 
+Route::get('/admin/enviar/notificacao/equipa', 'AdminController@criarNotificacaoEquipa')->middleware('auth', 'admin');
+
+Route::get('/admin/enviar/notificacao/jogador', 'AdminController@criarNotificacaoJogador')->middleware('auth', 'admin');
+
+Route::get('/admin/enviar/notificacao/todos', 'AdminController@criarNotificacaoTodos')->middleware('auth', 'admin');
+
+Route::get('/admin/notificacoes', 'AdminController@notificacoes')->middleware('auth', 'admin');
+
+
+Route::POST('admin/enviar/notificacao', 'AdminController@enviarNotificacao')->middleware('auth', 'admin');
+
 Route::get('/', 'GuestController@index');
 
 Route::get('/equipas', 'EquipasController@index');
@@ -37,9 +48,12 @@ Route::post('/equipa/create', 'EquipasController@add')->middleware('auth', 'noEq
 
 Route::post('/equipa/aceitar', 'EquipasController@aceitar')->middleware('auth', 'noEquipa', 'verified');
 
-Route::get('/notificacoes', 'ConviteController@show')->middleware('verified');
 
 Route::post('/notificacoes/visto', 'UserController@readNotification')->middleware('verified');
+
+Route::get('/notificacoes', 'ConviteController@show')->middleware('auth','verified');
+
+Route::get('/notificacoes/lidas', 'ConviteController@showRead')->middleware('auth','verified');
 
 Route::get('/convidar', 'CapitaoController@show');
 

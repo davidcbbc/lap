@@ -53,7 +53,7 @@
                                         <div class="site-section-heading">
                                             <h2 class="">Fundado em &nbsp</h2>
                                         </div>
-                                        <h2 style="color:#50c878;" > {{$info['equipa']->created_at}}</h2>
+                                        <h2 style="color:#50c878;" > {{Carbon\Carbon::parse($info['equipa']->created_at)->format('d M Y')}}</h2>
                                     </div>
 
                                     <div class="row">
@@ -103,7 +103,7 @@
                                         <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
                                             <div class="team-member">
 
-                                                <img src="{{asset('images/add.png')}}" alt="Image" class="img-fluid" height="200" width="200">
+                                                <img src="{{asset('images/adduser.png')}}" alt="Image" class="img-fluid" height="200" width="200">
 
                                                 <div class="text">
 
