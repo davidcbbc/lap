@@ -16,6 +16,14 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    public function search(Request $request){
+        // search for users
+        $users=\App\User::where('name','like','%'.$request->input('text').'%')
+                                        ->orWhere('nick','like','%'.$request->input('text').'%')
+                                        ->paginate(10);
+        return view('users',compact('users'));
+    }
+
 
 
     public function readNotification(Request $request){
@@ -51,6 +59,11 @@ class UserController extends Controller
             Auth::user()->save();
         }
         return redirect()->back()->with('message','Equipa eleminada com sucesso.');
+    }
+
+    public function showAll(){
+        $users = \App\User::paginate(10);
+        return view('users',compact('users'));
     }
 
 

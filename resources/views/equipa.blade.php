@@ -9,6 +9,9 @@
 @section('equipas')
     <li class="active">
         @endsection
+        @section('users')
+    <li>
+@endsection
 
         @section('content')
 

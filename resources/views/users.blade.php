@@ -7,12 +7,11 @@
     <li>
 @endsection
 @section('equipas')
-    <li class="active">
-        @endsection
-@section('users')
     <li>
 @endsection
-
+@section('users')
+    <li class="active">
+@endsection
         @section('content')
 
 
@@ -31,7 +30,7 @@
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">
-                            <h1 class="text-white">Equipas</h1>
+                            <h1 class="text-white">Jogadores</h1>
                             <p>da arena.</p>
                         </div>
                     </div>
@@ -40,10 +39,10 @@
 
             <div class="site-section">
                 <div class="container">
-                    <form action="/equipas/search" method="GET" role="search">
+                    <form action="/users/search" method="GET" role="search">
                         <div class="input-group">
                                 <input type="text" class="form-control" name="text"
-                                    placeholder="Procurar por equipa">
+                                    placeholder="Procurar por nome ou nick">
                                 <button type="submit" class="btn btn-primary mx-3">
                                     <span class="">Procurar</span>
                                 </button>
@@ -61,29 +60,33 @@
                             <thead>
                             <tr>
                                 <th scope="col">Nome</th>
-                                <th scope="col">Total Jogadores</th>
-                                <th scope="col">Capitão</th>
-                                <th scope="col">Torneios Vencidos</th>
+                                <th scope="col">Nick</th>
+                                <th scope="col">Equipa</th>
+                                <th scope="col">Número Aluno</th>
 
 
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($equipas as $equipa)
+                            @foreach($users as $user)
                                 <tr>
-                                    <th><a href="{{"" . $equipa->id}}">{{$equipa->nome}}</a></th>
-                                    <td>{{$equipa->users->count()}}</td>
-                                    <td><a href="{{"/users/" . $equipa->user_id}}">{{\App\User::find($equipa->user_id)->nick}}</a></td>
-                                    <td>{{$equipa->torneios_vencidos}}</td>
+                                    <th><a href="{{"users/" . $user->id}}">{{$user->name}}</a></th>
+                                    <td>{{$user->nick}}</td>
+                                    @if($user->equipa != null)
+                                    <td><a href="{{"/equipas/" . $user->equipa->id}}">{{$user->equipa->nome}}</a></td>
+                                    @else
+                                    <td>-</td>
+                                    @endif
+                                    <td>{{$user->numero_aluno}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
 
                         </table>
-                        @if($equipas->isEmpty())
+                        @if($users->isEmpty())
                             <p>Sem resultados</p>
                             @endif
-                        {{$equipas->links()}}
+                        {{$users->links()}}
 
                     </div>
                 </div>

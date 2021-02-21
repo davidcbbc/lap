@@ -7,8 +7,11 @@
     <li>
 @endsection
 @section('equipas')
-    <li class="active">
+    <li>
         @endsection
+                        @section('users')
+    <li  class="active">
+@endsection
 
         @section('content')
 

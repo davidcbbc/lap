@@ -32,6 +32,10 @@ Route::get('/', 'GuestController@index');
 
 Route::get('/equipas', 'EquipasController@index');
 
+Route::get('/users','UserController@showAll');
+
+Route::get('/users/search','UserController@search');
+
 Route::get('/equipas/search', 'EquipasController@search');
 
 Route::get('/equipas/{id}', 'EquipasController@show');
@@ -47,7 +51,6 @@ Route::get('/equipa/create', 'EquipasController@create')->middleware('auth', 'no
 Route::post('/equipa/create', 'EquipasController@add')->middleware('auth', 'noEquipa', 'verified');
 
 Route::post('/equipa/aceitar', 'EquipasController@aceitar')->middleware('auth', 'noEquipa', 'verified');
-
 
 Route::post('/notificacoes/visto', 'UserController@readNotification')->middleware('verified');
 

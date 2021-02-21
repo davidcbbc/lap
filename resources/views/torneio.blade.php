@@ -12,6 +12,10 @@
 <li class="active">
   @endsection
 
+          @section('users')
+    <li>
+@endsection
+
   @section('content')
 
   <div style="min-height: 100%;">

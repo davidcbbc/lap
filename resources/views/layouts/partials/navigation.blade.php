@@ -23,6 +23,11 @@
             <a href="/equipas">Equipas</a>
             </li>
 
+            @yield('users')
+            <a href="/users">Jogadores</a>
+            </li>
+
+
             @guest
 
 
