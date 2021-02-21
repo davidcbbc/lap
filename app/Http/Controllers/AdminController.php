@@ -181,6 +181,7 @@ class AdminController extends Controller
         $torneio->data_inicio = $request->inicio;
         $torneio->data_fim = $request->fim;
         $torneio->max_equipas = $request->maxEquipas;
+        $torneio->fase = $request->fase;
 
         if ($torneio->save())
             return redirect('/admin/torneios')->with('message', "Torneio editado com sucesso!");

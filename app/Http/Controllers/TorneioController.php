@@ -26,8 +26,7 @@ class TorneioController extends Controller
 
     public function show($id){
         $torneio = Torneio::findOrFail($id);
-        return view('torneio', compact('torneio'));
-        if($torneio->data_inicio <= Carbon::now()){
+        if($torneio->fase != "REGISTER"){
             // caso o torneio ja tenha comecado
             return view('torneio', compact('torneio'));
         }

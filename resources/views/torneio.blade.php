@@ -41,7 +41,20 @@
         <iframe src="{{$torneio->link}}" width="100%" height="800" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
       </div>
       @else
-      <p>As colocações estão a ser geradas para este torneiro , tenta ver mais tarde.</p>
+      <div class="container justify-content-center" style="margin-top: 10%;">
+      <p>As colocações estão a ser geradas para este torneio , tenta ver mais tarde.</p>
+      </div>
+      
       @endif
     </div>
+
+
+                <div class="bg-primary" data-aos="fade">
+                <div class="container">
+                    <div class="row">
+                        <p1>Nova et nove</p1>
+
+                    </div>
+                </div>
+            </div>
     @endsection

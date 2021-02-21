@@ -27,11 +27,13 @@ class HomeController extends Controller
     public function index()
     {
         // vai se buscar os torneios que ainda vao acontecer
-        $torneios = Torneio::where('data_inicio','>=',Carbon::now())->get();
+        $torneiosProximos = Torneio::where('fase','REGISTER')->get();
+        $torneiosAcabados = Torneio::where('fase','FINISHED')->get();
+        $torneiosDecorrer = Torneio::where('fase','STARTED')->get();
         $files = File::allFiles('images/home');
         $randomFile = $files[rand(0,count($files) - 1)];
         $nomeDaImagem = pathinfo($randomFile)['basename'];
-        $info = array("torneios" => $torneios, "imagem" => $nomeDaImagem);
+        $info = array("torneiosDecorrer" => $torneiosDecorrer,"torneiosAcabados" => $torneiosAcabados,"torneiosProximos" => $torneiosProximos, "imagem" => $nomeDaImagem);
         return view('home',compact('info'));
     }
 }

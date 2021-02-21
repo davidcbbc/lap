@@ -23,6 +23,13 @@
                         <option value="{{$torneio->max_equipas}}">{{$torneio->max_equipas}}</option> @for($i=0; $i<=24;$i++) <option value="{{$i}}">{{$i}}</option>
                             @endfor
                     </select>
+                     <span class="input-group-text ms-2" id="basic-addon1">Fase</span>
+                    <select name="fase">
+                        <option value="{{$torneio->fase}}">{{$torneio->fase}}</option>
+                        <option value="REGISTER">REGISTER</option>
+                        <option value="STARTED">STARTED</option>
+                        <option value="FINISHED">FINISHED</option>
+                    </select>
                     <span class="input-group-text ms-2" id="basic-addon1">Prémio:</span>
                     <input type="number_format" value="{{$torneio->premio}}" name="premio" class="form-control" placeholder="Prémio" aria-label="Prémio" aria-describedby="basic-addon1">
                 </div>
