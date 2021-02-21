@@ -96,14 +96,6 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    /*
-            caso seja uma notificacao para um jogador o input tem o nome 'notiJogador' e oo select tem o nome 'to' -->envias date_interval_create_from_date_string
-            caso seja uma notificacao para uma equipa o input tem o nome 'notiEquipa' e o select tem o nome 'equipa' é o id dela --> precorrer o pessoal da equipa e enviarNotificacao
-            caso seja para todos a notificacao o input tem o nome 'notiTodos' e enviamos para criarNotificacaoTodos
-            fiz isto para não termos muitas routes escusadamente
-        */
-
-
     public function enviarNotiJogador(Request $request)
     {
         $request->validate([
@@ -146,7 +138,6 @@ class AdminController extends Controller
         $request->validate([
             'nome' => 'required',
             'fim' => 'required',
-            'link' => 'required',
             'inicio' => 'required',
             'premio' => 'required',
             'maxEquipas' => 'required',
@@ -165,6 +156,35 @@ class AdminController extends Controller
         if ($torneio->save())
             return redirect('/admin/torneios')->with('message', "Torneio adicionado com sucesso!");
         return redirect('admin/torneios')->with('message', "Erro ao criar Torneio!");
+    }
+
+    public function editarTorneio(Torneio $torneio)
+    {
+        return view('admin.editarTorneio', ['torneio' => $torneio]);
+    }
+
+    public function updateTorneio(Request $request, Torneio $torneio)
+    {
+        $request->validate([
+            'nome' => 'required',
+            'fim' => 'required',
+            'inicio' => 'required',
+            'premio' => 'required',
+            'maxEquipas' => 'required',
+            'jogo' => 'required'
+        ]);
+
+        $torneio->nome = $request->nome;
+        $torneio->link = $request->link;
+        $torneio->jogo = $request->jogo;
+        $torneio->premio = $request->premio;
+        $torneio->data_inicio = $request->inicio;
+        $torneio->data_fim = $request->fim;
+        $torneio->max_equipas = $request->maxEquipas;
+
+        if ($torneio->save())
+            return redirect('/admin/torneios')->with('message', "Torneio editado com sucesso!");
+        return redirect('admin/torneios')->with('message', "Erro ao editar Torneio!");
     }
 
 
