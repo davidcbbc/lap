@@ -2,9 +2,26 @@
 
 @section('content')
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong><br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 ">
         <h2>Notificação para Jogador</h2>
     </div>
+
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+    @endif
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mt-5">
         <div class="table-responsive" style="width: 50%; margin: 0 auto;">
             <form action="{{ url('admin/enviar/notificacao')}}" method="POST">
@@ -16,9 +33,8 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Jogador </span>
                     <select name="to" class="form-control">
-                        <option value="all">Todos</option>
                         @foreach($users as $user)
-                        <option value="{{$user->email}}">{{$user->nick}}</option>
+                        <option value="{{$user->id}}">{{$user->nick}}</option>
                         @endforeach
                     </select>
                 </div>
