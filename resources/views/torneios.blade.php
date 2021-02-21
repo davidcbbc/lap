@@ -39,7 +39,7 @@
                                     <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
                                         <h2 class="mb-1">{{$torneio->nome}}</h2><br>
                                     </div>
-                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Data início </strong>{{$torneio->data_inicio}}</p>
+                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Data início </strong>{{Carbon\Carbon::parse($torneio->data_inicio)->format('d M Y')}}</p>
                                     <p style="color:white;" class="text-center"><strong style="color: #50c878">Prémio </strong>{{$torneio->premio}}</p>
                                     <p style="color:white;" class="text-center"><strong style="color: #50c878">Máximo Equipas </strong>{{$torneio->max_equipas}}</p>
                                     <p style="color:white;" class="text-center"><strong style="color: #50c878">Equipas Inscritas </strong>{{count($torneio->equipas)}}</p>
