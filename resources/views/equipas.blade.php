@@ -73,7 +73,7 @@
                                 <tr>
                                     <th><a href="{{"" . $equipa->id}}">{{$equipa->nome}}</a></th>
                                     <td>{{$equipa->users->count()}}</td>
-                                    <td><a href="{{"/users/" . $equipa->user_id}}">{{\App\User::find($equipa->user_id)->nick}}</a></td>
+                                    <td><a href="{{"" . $equipa->user_id}}">{{\App\User::find($equipa->user_id)->nick}}</a></td>
                                     <td>{{$equipa->torneios_vencidos}}</td>
                                 </tr>
                             @endforeach
