@@ -26,7 +26,7 @@
                 <div class="site-mobile-menu-body"></div>
             </div> <!-- .site-mobile-menu -->
 
-            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('images/equipa.jpg');"
+            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('{{asset("images/equipa.jpg")}}')"
                  data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
@@ -71,9 +71,9 @@
                             <tbody>
                             @foreach($equipas as $equipa)
                                 <tr>
-                                    <th><a href="{{"" . $equipa->id}}">{{$equipa->nome}}</a></th>
+                                    <th><a href={{url('equipas/'.$equipa->id)}}>{{$equipa->nome}}</a></th>
                                     <td>{{$equipa->users->count()}}</td>
-                                    <td><a href="{{"" . $equipa->user_id}}">{{\App\User::find($equipa->user_id)->nick}}</a></td>
+                                    <td><a href={{url('users/'.$equipa->user_id)}}>{{\App\User::find($equipa->user_id)->nick}}</a></td>
                                     <td>{{$equipa->torneios_vencidos}}</td>
                                 </tr>
                             @endforeach

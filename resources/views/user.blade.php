@@ -40,7 +40,7 @@
                             @if($info['user']->imagem_path != null)
                             <img style="border: transparent;background-color: transparent;" src="{{asset('storage/'.$info['user']->imagem_path)}}" class="img-thumbnail" alt="Imagem" height="300" width="300">
                             @else
-                            <img style="border: transparent;background-color: transparent;" src="{{asset('images/person_1.jpg')}}" class="img-thumbnail" alt="Imagem" height="300" width="300">
+                            <img style="border: transparent;background-color: transparent;" src="{{asset('images/gamer.png')}}" class="img-thumbnail" alt="Imagem" height="300" width="300">
                             @endif
                         </div>
                         <div class="col-sm">
@@ -48,7 +48,7 @@
                                 <h2 class="">{{$info['user']->name}}</h2>
                             </div>
 
-                            <div class="row">
+                            <div class="row" style="margin-top: 100px">
                                 <div class="site-section-heading">
                                     <h2 class="">Nickname &nbsp</h2>
                                 </div>
@@ -64,6 +64,13 @@
                                 @else
                                 <h2 style="color: grey;" class="text-center">Sem equipa</h2>
                                 @endif
+                            </div>
+
+                            <div class="row">
+                                <div class="site-section-heading">
+                                    <h2 class="">Número Aluno&nbsp</h2>
+                                </div>
+                                <h2 style="color:#50c878;">{{$info['user']->numero_aluno}}</h2>
                             </div>
 
 

@@ -25,7 +25,7 @@
                 <div class="site-mobile-menu-body"></div>
             </div> <!-- .site-mobile-menu -->
 
-            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('images/equipa.jpg');"
+            <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('{{asset("images/equipa.jpg")}}')"
                  data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
@@ -70,10 +70,10 @@
                             <tbody>
                             @foreach($users as $user)
                                 <tr>
-                                    <th><a href="{{"users/" . $user->id}}">{{$user->name}}</a></th>
+                                    <th><a href={{url('users/'.$user->id)}}>{{$user->name}}</a></th>
                                     <td>{{$user->nick}}</td>
                                     @if($user->equipa != null)
-                                    <td><a href="{{"/equipas/" . $user->equipa->id}}">{{$user->equipa->nome}}</a></td>
+                                    <td><a href={{url('equipas/'.$user->equipa->id)}}>{{$user->equipa->nome}}</a></td>
                                     @else
                                     <td>-</td>
                                     @endif

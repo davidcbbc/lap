@@ -86,7 +86,7 @@
                                             @if($user->imagem_path != null)
                                                 <img src="{{asset('storage/'.$user->imagem_path)}}" alt="Image" class="img-thumbnail" height="200" width="200">
                                             @else
-                                                <img src="{{asset('images/person_1.jpg')}}" alt="Image" class="img-thumbnail">
+                                                <img src="{{asset('images/gamer.png')}}" alt="Image" class="img-thumbnail">
                                             @endif
 
 
