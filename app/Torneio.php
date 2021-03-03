@@ -16,5 +16,9 @@ class Torneio extends Model
     public function equipas(){
         return $this->belongsToMany(\App\Equipa::class,'torneios_equipas');
     }
+ 
+    public function jogadoresFifa(){
+        return $this->belongsToMany(\App\User::class,'torneios_jogadores_fifa');
+    }
 
 }

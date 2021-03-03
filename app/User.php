@@ -73,4 +73,11 @@ class User extends Authenticatable implements MustVerifyEmail
         if($this->equipa == null) return "-";
         return $this->equipa->nome;
     }
+
+
+    public function torneiosFifa() {
+        return $this->belongsToMany(\App\Torneio::class,'torneios_jogadores_fifa');
+    }
+
+
 }

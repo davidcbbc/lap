@@ -51,7 +51,13 @@
                         @foreach($info['torneiosProximos'] as $torneio)
                             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                                 <a href="/torneio/{{$torneio->id}}" class="unit-9">
+                                    @if($torneio->jogo == "CS:GO")
                                     <div class="image" style="background-image: url({{ URL::asset('images/csgo.jpg') }});"></div>
+                                    @elseif($torneio->jogo == "FIFA")
+                                    <div class="image" style="background-image: url({{ URL::asset('images/fifa.jpg') }});"></div>
+                                    @elseif($torneio->jogo == "LOL")
+                                    <div class="image" style="background-image: url({{ URL::asset('images/lol.jpg') }});"></div>
+                                    @endif
                                     <div class="unit-9-content">
                                         <h2>{{$torneio->nome}}</h2>
                                         <span> <b style="color:#50c878">jogo</b> {{$torneio->jogo}}</span>

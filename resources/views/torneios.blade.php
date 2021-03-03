@@ -33,7 +33,13 @@
                 <div class="container" data-aos="fade-up">
                     <div class="row row-header">
                         <div class="col-sm">
-                            <img src="{{asset('images/csgo.jpg')}}" class="img-thumbnail" alt="Cinque Terre" style="">
+                            @if($torneio->jogo == "CS:GO")
+                            <img src="{{asset('images/csgo.jpg')}}" class="img-thumbnail" alt="cs" style="">
+                            @elseif($torneio->jogo == "FIFA")
+                            <img src="{{asset('images/fifa.jpg')}}" class="img-thumbnail" alt="fifa" style="">
+                            @elseif($torneio->jogo == "LOL")
+                            <img src="{{asset('images/lol.jpg')}}" class="img-thumbnail" alt="lol" style="">
+                            @endif
                         </div>
                         <div class="col-sm">
                             <div class="site-section-heading text-center mb-2 w-border col-md-6 mx-auto">
@@ -41,8 +47,13 @@
                             </div>
                             <p style="color:white;" class="text-center"><strong style="color: #50c878">Data início </strong>{{Carbon\Carbon::parse($torneio->data_inicio)->format('d M Y')}}</p>
                             <p style="color:white;" class="text-center"><strong style="color: #50c878">Prémio </strong>{{$torneio->premio}}</p>
+                            @if($torneio->jogo == "FIFA")
+                            <p style="color:white;" class="text-center"><strong style="color: #50c878">Máximo Jogadores </strong>{{$torneio->max_equipas}}</p>
+                            <p style="color:white;" class="text-center"><strong style="color: #50c878">Jogadores Inscritos </strong>{{count($torneio->jogadoresFifa)}}</p>
+                            @else
                             <p style="color:white;" class="text-center"><strong style="color: #50c878">Máximo Equipas </strong>{{$torneio->max_equipas}}</p>
                             <p style="color:white;" class="text-center"><strong style="color: #50c878">Equipas Inscritas </strong>{{count($torneio->equipas)}}</p>
+                            @endif
                         </div>
                     </div>
                     <br>
@@ -50,43 +61,69 @@
                         @if($errors->any())
                         <p style="color: orangered">{{$errors->first()}}</p>
                         @endif
-                        @if(Auth::user()->isCapitao() && !Auth::user()->equipa->torneios->contains($torneio))
-                        @if(Auth::user()->equipa->users->count() < 5) <!-- TODO MUDAR ISTO PARA < 5 -->
-                            <p>A tua equipa tem que ter pelo menos 5 jogadores para entrar no torneio.</p>
-                            @else
+
+                        @if($torneio->jogo == "FIFA")
+                            @if(!Auth::user()->torneiosFifa->contains($torneio))
                             <form action="/torneio/registar" class="contact-form" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row form-group">
                                     <div class="col-md-12">
                                         <input id="torneio_id" type="hidden" name="torneio_id" value="{{$torneio->id}}">
-                                        <input id="equipa_id" type="hidden" name="equipa_id" value="{{Auth::user()->equipa->id}}">
+                                        <input id="user_id" type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                         <input type="submit" value="Participar" class="btn btn-primary py-2 px-2">
                                     </div>
-                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Data início </strong>{{Carbon\Carbon::parse($torneio->data_inicio)->format('d M Y')}}</p>
-                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Prémio </strong>{{$torneio->premio}}</p>
-                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Máximo Equipas </strong>{{$torneio->max_equipas}}</p>
-                                    <p style="color:white;" class="text-center"><strong style="color: #50c878">Equipas Inscritas </strong>{{count($torneio->equipas)}}</p>
                                 </div>
                             </form>
-                            @endif
+                            @else
+                            <p style="color: #50c878">Estás registado no torneio!</p>
+                            @endif 
+                            
+                        @else
+                            @if(Auth::user()->isCapitao() && !Auth::user()->equipa->torneios->contains($torneio))
+                                @if(Auth::user()->equipa->users->count() < 5) <!-- TODO MUDAR ISTO PARA < 5 -->
+                                    <p>A tua equipa tem que ter pelo menos 5 jogadores para entrar no torneio.</p>
+                                @else
+                                    <form action="/torneio/registar" class="contact-form" method="POST" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <div class="row form-group">
+                                            <div class="col-md-12">
+                                                <input id="torneio_id" type="hidden" name="torneio_id" value="{{$torneio->id}}">
+                                                <input id="equipa_id" type="hidden" name="equipa_id" value="{{Auth::user()->equipa->id}}">
+                                                <input type="submit" value="Participar" class="btn btn-primary py-2 px-2">
+                                            </div>
+                                        </div>
+                                    </form>
+                                @endif
                             @elseif(Auth::user()->equipa == null)
                             <p>Entra numa equipa para poderes participar no torneio.</p>
                             @elseif(Auth::user()->equipa->torneios->contains($torneio))
                             <p style="color: #50c878">A tua equipa está registada no torneio!</p>
                             @elseif(!Auth::user()->isCapitao())
                             <p>Apenas o capitão da tua equipa pode registar a equipa no torneio.</p>
-
                             @endif
+                        @endif
 
 
                             <div class="site-section-heading w-border">
+                                @if($torneio->jogo == "FIFA")
+                                <h2 class="mb-1">Jogadores inscritos</h2><br>
+                                @else
                                 <h2 class="mb-1">Equipas inscritas</h2><br>
+                                @endif
                             </div>
                             <div class="row">
-                                @foreach($torneio->equipas as $equipa)
-                                <a href="{{url('/equipas/'.$equipa->id)}}"><img src="{{asset('storage/'.$equipa->imagem_path)}}" title="{{$equipa->nome}}" width="100" height="40" class="img-thumbnail" style="max-width: 100%; height: auto;margin: 0px 5px 5px">
-                                </a>
-                                @endforeach
+                                @if($torneio->jogo == "FIFA")
+                                    @foreach($torneio->jogadoresFifa as $jogador)
+                                    <a href="{{url('/users/'.$jogador->id)}}"><img src="{{$jogador->imagem_path == null ? asset('images/gamer.png') : asset('storage/'.$jogador->imagem_path)}}" title="{{$jogador->nome}}" width="100" height="40" class="img-thumbnail" style="max-width: 100%; height: auto;margin: 0px 5px 5px">
+                                    </a>
+                                    @endforeach
+                                @else
+                                    @foreach($torneio->equipas as $equipa)
+                                    <a href="{{url('/equipas/'.$equipa->id)}}"><img src="{{asset('storage/'.$equipa->imagem_path)}}" title="{{$equipa->nome}}" width="100" height="40" class="img-thumbnail" style="max-width: 100%; height: auto;margin: 0px 5px 5px">
+                                    </a>
+                                    @endforeach
+                                @endif
+                                
                             </div>
                     </div>
 

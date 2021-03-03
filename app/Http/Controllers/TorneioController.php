@@ -35,14 +35,25 @@ class TorneioController extends Controller
 
 
     public function registarEquipa(Request $request){
-        $torneio = \App\Torneio::where('id','=',$request->torneio_id)->get()[0];
-        if($torneio->equipas->count() < $torneio->max_equipas){
-            DB::table('torneios_equipas')->insert([
-                'equipa_id' => $request->equipa_id, 'torneio_id' => $request->torneio_id
-            ]);
-            return back();
-        }
-        return back()->withErrors(['O torneio já está cheio.']);
+            $torneio = \App\Torneio::where('id','=',$request->torneio_id)->get()[0];
+            if($torneio == null) return back()->withErrors(['Algo de errado não está certo , volta a tentar']);
+            if($torneio->equipas->count() < $torneio->max_equipas){
+                if($request->equipa_id != null) {
+                    DB::table('torneios_equipas')->insert([
+                        'equipa_id' => $request->equipa_id, 'torneio_id' => $request->torneio_id
+                    ]);
+                } else {
+                    //torneio de fifa
+                    if($request->user_id == null) return back()->withErrors(['Algo de errado não está certo , volta a tentar']);
+                    DB::table('torneios_jogadores_fifa')->insert([
+                        'user_id' => $request->user_id, 'torneio_id' => $request->torneio_id
+                    ]);
+                }
+                
+                return back()->with('message','Inscrição feita com sucesso');
+            }
+            return back()->withErrors(['O torneio já está cheio.']);
+
     }
 
 
