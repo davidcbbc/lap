@@ -127,7 +127,7 @@ class AdminController extends Controller
             'notiTodos' => 'required'
         ]);
 
-        $users = User::all();
+        $users = User::whereNotNull('email_verified_at')->get();
         foreach ($users as $user) {
             $user->notify(new Message('Mensagem Geral', $request->notiTodos));
         }

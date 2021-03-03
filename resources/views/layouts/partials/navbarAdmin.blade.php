@@ -21,6 +21,11 @@
                     Notificações
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url ('admin/notificacoes') }}">
+                    Discord
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

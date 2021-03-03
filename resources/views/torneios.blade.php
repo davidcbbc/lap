@@ -125,6 +125,13 @@
                                 @endif
                                 
                             </div>
+                            <br>
+                            <div class="site-section-heading w-border">
+                                <h2 class="mb-1">Discord</h2><br>
+                            </div>
+                            <p>Para consulta de regras, regulamentos, esclarecimento de questões com um dos membros da AAFP e check-in</p>
+                            <iframe src="https://discord.com/widget?id=816685792306397194&theme=dark" width="500" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+
                     </div>
 
                 </div>
