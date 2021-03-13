@@ -10,6 +10,7 @@ use App\Equipa;
 use App\Notifications\Message;
 use App\Torneio;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Client;
 
 class AdminController extends Controller
 {
@@ -131,6 +132,14 @@ class AdminController extends Controller
         foreach ($users as $user) {
             $user->notify(new Message('Mensagem Geral', $request->notiTodos));
         }
+
+        // notify discord
+        $client = new Client(['http_errors' => false]);
+        $res = $client->request('POST', 'https://discord.com/api/webhooks/816958224552427572/0whELpB73VrgxHq9Q8fdvfwvjL6T-K02AArFZ7KTHo96m9aU7iJuDsI7VDqBhamKGfpf', [
+            'form_params' => [
+                'content' => $request->notiTodos,
+            ]
+        ]);
     }
 
     public function criarTorneio(Request $request)
